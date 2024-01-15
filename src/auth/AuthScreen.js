@@ -7,7 +7,6 @@ const AuthScreen = () => {
 
   return (
     <div>
-      {showSignup ? <SignupForm /> : <LoginForm />}
       <button
         onClick={() => {
           setShowSignup(!showSignup);
@@ -15,6 +14,7 @@ const AuthScreen = () => {
       >
         {showSignup ? "로그인 창" : "회원가입 창"}
       </button>
+      {showSignup ? <SignupForm /> : <LoginForm />}
     </div>
   );
 };

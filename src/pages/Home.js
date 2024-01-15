@@ -29,22 +29,16 @@ const Home = () => {
       </div>
 
       <div>
-        <Link to="/login" className="btn btn-secondary mr-2">
+        <Link to="/authscreen" className="btn btn-secondary mr-2">
           로그인/회원가입
         </Link>
         <br></br>
         <br></br>
         <Link to="/complaints" className="btn btn-secondary">
-          민원 접수
-        </Link>
-        <br></br>
-        <br></br>
-        <Link to="/complaints" className="btn btn-secondary">
-          민원 조회
+          민원 접수 / 조회
         </Link>
       </div>
     </div>
   );
 };
-
 export default Home;
