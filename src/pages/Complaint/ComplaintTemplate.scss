@@ -2,10 +2,10 @@
 // 자식 컴포넌트의 스타일을 조금 더 밝게 조정합니다.
 
 .ComplaintTemplate {
-  width: 512px;
+  max-width: 600px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 6rem;
   border-radius: 4px;
   overflow: hidden;
   background: #fff; // 밝은 배경 색상 설정

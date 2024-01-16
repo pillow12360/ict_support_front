@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <div className="container mt-5">
-      <h1 className="mb-3">ICT 지원실 민원처리</h1>
+      <h1 className="mb-3">ICT 지원실 민원 처리</h1>
       <p>이곳에서는 다양한 ICT 관련 민원을 접수하고 처리합니다.</p>
       <p>
         문제 해결을 위한 자주 묻는 질문, 사용자 가이드 등을 찾아볼 수 있습니다.
