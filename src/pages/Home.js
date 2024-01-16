@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Modal from "../Modal";
 import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap CSS import
+import ComplaintTemplate from "./ComplaintTemplate";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -20,14 +21,14 @@ const Home = () => {
           className="btn btn-primary mr-2"
           onClick={() => setShowModal(true)}
         >
-          모달
+          소개
         </button>
 
         <Modal show={showModal} onClose={() => setShowModal(false)}>
-          <p>모달의 내용이 여기에 들어갑니다.</p>
+          <p>안녕하세요</p>
         </Modal>
       </div>
-
+      <ComplaintTemplate>안녕</ComplaintTemplate>
       <div>
         <Link to="/authscreen" className="btn btn-secondary mr-2">
           로그인/회원가입
@@ -35,7 +36,7 @@ const Home = () => {
         <br></br>
         <br></br>
         <Link to="/complaints" className="btn btn-secondary">
-          민원 접수 / 조회
+          민원 접수
         </Link>
       </div>
     </div>
