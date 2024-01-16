@@ -1,0 +1,9 @@
+.ComplaintItem {
+
+  padding : 1rem;
+  display: block;
+  align-items: center;
+  &:nth-child(even) {
+    background: #f8f9fa;
+  }
+}

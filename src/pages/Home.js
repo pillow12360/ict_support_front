@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Modal from "../Modal";
-import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap CSS import
-import ComplaintTemplate from "./ComplaintTemplate";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Modal from '../Modal';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap CSS import
+import ComplaintTemplate from './ComplaintTemplate';
+import ComplaintList from './ComplaintList';
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,7 +19,7 @@ const Home = () => {
 
       <div className="mb-3">
         <button
-          className="btn btn-primary mr-2"
+          className="btn btn-info mr-2"
           onClick={() => setShowModal(true)}
         >
           소개
@@ -32,11 +33,13 @@ const Home = () => {
         <Link to="/authscreen" className="btn btn-secondary mr-2">
           로그인/회원가입
         </Link>
-        <Link to="/complaints" className="btn btn-secondary">
+        <Link to="/complaints" className="btn btn-light">
           민원 접수
         </Link>
       </div>
-      <ComplaintTemplate>안녕</ComplaintTemplate>
+      <ComplaintTemplate>
+        <ComplaintList />
+      </ComplaintTemplate>
     </div>
   );
 };

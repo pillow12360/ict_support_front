@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import HomeButton from "../HomeButton";
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import HomeButton from '../HomeButton';
 
 function ComplaintForm() {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [building, setBuilding] = useState("");
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [building, setBuilding] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -62,7 +62,7 @@ function ComplaintForm() {
           {/* 여기에 추가적인 건물 옵션을 넣을 수 있습니다 */}
         </select>
       </div>
-      <button type="submit" className="btn btn-primary">
+      <button type="submit" className="btn btn-success">
         민원 제출 하기
       </button>
       <HomeButton />

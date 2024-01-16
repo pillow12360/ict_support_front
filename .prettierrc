@@ -4,5 +4,4 @@
   "useTab" : false,
   "tapWidth" : 2,
   "trailingComma" : "all",
-  "printWidth" : 80,
-}
+  "printWidth" : 80}

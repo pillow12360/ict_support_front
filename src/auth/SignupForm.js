@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const SignupForm = () => {
-  const [name, setName] = useState("");
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState('');
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
 
   async function handleSubmit(e) {
     e.preventDefault(); // 버튼 클릭시 기본 동작 막음
@@ -13,9 +13,9 @@ const SignupForm = () => {
     try {
       // API 요청을 보냅니다.
       const response = await fetch(api, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ name, id, password }),
       });
@@ -23,14 +23,14 @@ const SignupForm = () => {
       // 응답을 처리합니다.
       if (response.ok) {
         const data = await response.json();
-        console.log("회원가입 성공:", data);
+        console.log('회원가입 성공:', data);
         // 성공 처리 로직
       } else {
-        console.error("회원가입 실패");
+        console.error('회원가입 실패');
         // 실패 처리 로직
       }
     } catch (error) {
-      console.error("회원가입 중 에러 발생:", error);
+      console.error('회원가입 중 에러 발생:', error);
       // 네트워크 에러 처리 로직
     }
   }
@@ -55,7 +55,7 @@ const SignupForm = () => {
         onChange={(e) => setPassword(e.target.value)}
         placeholder="비밀번호"
       />
-      <button className="btn btn-primary" type="submit">
+      <button className="btn btn-success" type="submit">
         회원가입 완료
       </button>
     </form>

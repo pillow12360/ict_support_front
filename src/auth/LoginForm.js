@@ -1,34 +1,34 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const LoginForm = () => {
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
 
   async function handleSubmit(e) {
     e.preventDefault();
     // 백엔드 API로 로그인 요청을 보내는 로직
 
-    const api = "로그인 API 주소"; // 로그인 API 엔드포인트 주소
+    const api = '로그인 API 주소'; // 로그인 API 엔드포인트 주소
 
     try {
       const response = await fetch(api, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ id, password }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        console.log("로그인 성공:", data);
+        console.log('로그인 성공:', data);
         // 성공 처리 로직, 예를 들어 사용자를 대시보드로 리다이렉트
       } else {
-        console.error("로그인 실패");
+        console.error('로그인 실패');
         // 실패 처리 로직, 예를 들어 에러 메시지 표시
       }
     } catch (error) {
-      console.error("로그인 중 에러 발생:", error);
+      console.error('로그인 중 에러 발생:', error);
       // 네트워크 에러 처리 로직, 예를 들어 사용자에게 오류 알림
     }
   }
@@ -47,7 +47,7 @@ const LoginForm = () => {
         onChange={(e) => setPassword(e.target.value)}
         placeholder="비밀번호 입력"
       />
-      <button className="btn btn-primary" type="submit" onClick={handleSubmit}>
+      <button className="btn btn-success" type="submit" onClick={handleSubmit}>
         로그인하기
       </button>
     </form>
