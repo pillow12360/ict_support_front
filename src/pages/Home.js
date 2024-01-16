@@ -28,17 +28,15 @@ const Home = () => {
           <p>안녕하세요</p>
         </Modal>
       </div>
-      <ComplaintTemplate>안녕</ComplaintTemplate>
       <div>
         <Link to="/authscreen" className="btn btn-secondary mr-2">
           로그인/회원가입
         </Link>
-        <br></br>
-        <br></br>
         <Link to="/complaints" className="btn btn-secondary">
           민원 접수
         </Link>
       </div>
+      <ComplaintTemplate>안녕</ComplaintTemplate>
     </div>
   );
 };

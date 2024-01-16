@@ -3,7 +3,7 @@ import React from "react";
 const ComplaintTemplate = ({ children }) => {
   return (
     <div className="ComplaintTemplate">
-      <div className="app-title">민원 접수 내역</div>
+      <h1 className="app-title">민원 접수 내역</h1>
       <div className="content">{children}</div>
     </div>
   );
