@@ -47,7 +47,7 @@ const LoginForm = () => {
         onChange={(e) => setPassword(e.target.value)}
         placeholder="비밀번호 입력"
       />
-      <button type="submit" onClick={handleSubmit}>
+      <button className="btn btn-primary" type="submit" onClick={handleSubmit}>
         로그인하기
       </button>
     </form>

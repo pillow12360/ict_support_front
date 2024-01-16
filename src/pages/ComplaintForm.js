@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import HomeButton from "../HomeButton";
 
 function ComplaintForm() {
   const [title, setTitle] = useState("");
@@ -13,8 +14,7 @@ function ComplaintForm() {
       fetch();
     } catch {}
 
-    // api 처리 로직 추가
-
+    // api
     console.log({ title, content, building });
   };
 
@@ -45,7 +45,6 @@ function ComplaintForm() {
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
       </div>
-
       <div className="mb-3">
         <label htmlFor="building" className="form-label">
           건물 선택
@@ -63,10 +62,10 @@ function ComplaintForm() {
           {/* 여기에 추가적인 건물 옵션을 넣을 수 있습니다 */}
         </select>
       </div>
-
       <button type="submit" className="btn btn-primary">
         민원 제출 하기
       </button>
+      <HomeButton />
     </form>
   );
 }

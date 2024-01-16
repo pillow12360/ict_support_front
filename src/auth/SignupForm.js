@@ -55,7 +55,9 @@ const SignupForm = () => {
         onChange={(e) => setPassword(e.target.value)}
         placeholder="비밀번호"
       />
-      <button type="submit">회원가입 완료</button>
+      <button className="btn btn-primary" type="submit">
+        회원가입 완료
+      </button>
     </form>
   );
 };
