@@ -4,6 +4,7 @@ const SignupForm = () => {
   const [name, setName] = useState('');
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
+  const [testPass, setTestPass] = useState('');
 
   async function handleSubmit(e) {
     e.preventDefault(); // 버튼 클릭시 기본 동작 막음
@@ -41,13 +42,13 @@ const SignupForm = () => {
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        placeholder="이름"
+        placeholder="이름을 입력하세요"
       />
       <input
         type="id"
         value={id}
         onChange={(e) => setId(e.target.value)}
-        placeholder="아이디"
+        placeholder="아이디를 입력하세요"
       />
       <input
         type="password"
@@ -55,6 +56,14 @@ const SignupForm = () => {
         onChange={(e) => setPassword(e.target.value)}
         placeholder="비밀번호"
       />
+
+      <input
+        type="password"
+        value={testPass}
+        onChange={(e) => setTestPass(e.target.value)}
+        placeholder="비밀번호 확인"
+      />
+
       <button className="btn btn-success" type="submit">
         회원가입 완료
       </button>

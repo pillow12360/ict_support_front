@@ -1,0 +1,28 @@
+// 모달 창 배경이 어두운 색상을 가지고 있다고 가정할 때,
+// 자식 컴포넌트의 스타일을 조금 더 밝게 조정합니다.
+
+.ComplaintTemplate {
+  width: 512px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6rem;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff; // 밝은 배경 색상 설정
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // 모달에 그림자 추가하여 입체감 부여
+}
+
+.app-title {
+  background: #22b8cf; // 모달 헤더 색상은 그대로 유지하거나 모달 창의 배경색에 맞게 조정
+  color: white;
+  height: 4rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  background: white; // 내용 부분은 흰색 배경 유지
+  padding: 1rem; // 콘텐츠에 패딩 추가하여 여백 제공
+}

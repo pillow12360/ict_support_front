@@ -1,9 +1,9 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import AuthScreen from "./auth/AuthScreen"; // 가정: 로그인 폼 컴포넌트의 경로
-import NotFound from "./pages/NotFound";
-import ComplaintForm from "./pages/ComplaintForm";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import AuthScreen from './auth/AuthScreen'; // 가정: 로그인 폼 컴포넌트의 경로
+import NotFound from './pages/NotFound';
+import ComplaintForm from './pages/Complaint/ComplaintForm';
 
 const App = () => {
   return (

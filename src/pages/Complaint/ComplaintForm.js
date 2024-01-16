@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import HomeButton from '../HomeButton';
+import HomeButton from '../../HomeButton';
 
 function ComplaintForm() {
   const [title, setTitle] = useState('');
