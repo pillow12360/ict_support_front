@@ -8,6 +8,27 @@ import ComplaintList from './Complaint/ComplaintList';
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
 
+  const [complaints, setComplaints] = useState([
+    {
+      id: 1,
+      title: '안녕',
+      content: '테스트',
+      building: '배양관',
+    },
+    {
+      id: 2,
+      title: '안녕2',
+      content: '테스트3',
+      building: '배양관123',
+    },
+    {
+      id: 3,
+      title: '안녕3',
+      content: '테스트2',
+      building: '배양관31',
+    },
+  ]);
+
   return (
     <div className="container mt-5">
       <h1 className="mb-3">ICT 지원실 민원 처리</h1>
@@ -32,7 +53,7 @@ const Home = () => {
         </button>
         <Modal show={showModal} onClose={() => setShowModal(false)}>
           <ComplaintTemplate>
-            <ComplaintList />
+            <ComplaintList complaints={complaints} />
           </ComplaintTemplate>
         </Modal>
       </div>
