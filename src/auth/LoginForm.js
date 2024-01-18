@@ -34,20 +34,26 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="id"
-        value={id}
-        onChange={(e) => setId(e.target.value)}
-        placeholder="아이디 입력"
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="비밀번호 입력"
-      />
-      <button className="btn btn-success" type="submit" onClick={handleSubmit}>
+    <form onSubmit={handleSubmit} className="p-4">
+      <div className="mb-3">
+        <input
+          type="id"
+          className="form-control"
+          value={id}
+          onChange={(e) => setId(e.target.value)}
+          placeholder="아이디 입력"
+        />
+      </div>
+      <div className="mb-3">
+        <input
+          type="password"
+          className="form-control"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="비밀번호 입력"
+        />
+      </div>
+      <button className="btn btn-success" type="submit">
         로그인하기
       </button>
     </form>

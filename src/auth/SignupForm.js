@@ -37,33 +37,43 @@ const SignupForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="이름을 입력하세요"
-      />
-      <input
-        type="id"
-        value={id}
-        onChange={(e) => setId(e.target.value)}
-        placeholder="아이디를 입력하세요"
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="비밀번호"
-      />
-
-      <input
-        type="password"
-        value={testPass}
-        onChange={(e) => setTestPass(e.target.value)}
-        placeholder="비밀번호 확인"
-      />
-
+    <form onSubmit={handleSubmit} className="p-4">
+      <div className="mb-3">
+        <input
+          type="text"
+          className="form-control"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="이름을 입력하세요"
+        />
+      </div>
+      <div className="mb-3">
+        <input
+          type="id"
+          className="form-control"
+          value={id}
+          onChange={(e) => setId(e.target.value)}
+          placeholder="아이디를 입력하세요"
+        />
+      </div>
+      <div className="mb-3">
+        <input
+          type="password"
+          className="form-control"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="비밀번호"
+        />
+      </div>
+      <div className="mb-3">
+        <input
+          type="password"
+          className="form-control"
+          value={testPass}
+          onChange={(e) => setTestPass(e.target.value)}
+          placeholder="비밀번호 확인"
+        />
+      </div>
       <button className="btn btn-success" type="submit">
         회원가입 완료
       </button>
