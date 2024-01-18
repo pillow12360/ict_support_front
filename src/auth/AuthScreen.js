@@ -1,21 +1,20 @@
-import React, { useState } from "react";
-import SignupForm from "./SignupForm";
-import LoginForm from "./LoginForm";
-import HomeButton from "../HomeButton";
+import React, { useState } from 'react';
+import SignupForm from './SignupForm';
+import LoginForm from './LoginForm';
+import HomeButton from '../HomeButton';
+import styles from './AuthScreen.module.scss';
 
 const AuthScreen = () => {
   const [showSignup, setShowSignup] = useState(false);
 
   return (
-    <div>
+    <div className={styles.authScreen}>
       <HomeButton />
       <button
-        className="btn btn-primary"
-        onClick={() => {
-          setShowSignup(!showSignup);
-        }}
+        className={`btn btn-primary ${styles.toggleButton}`}
+        onClick={() => setShowSignup(!showSignup)}
       >
-        {showSignup ? "로그인 창" : "회원가입 창"}
+        {showSignup ? '로그인 창' : '회원가입 창'}
       </button>
       {showSignup ? <SignupForm /> : <LoginForm />}
     </div>
