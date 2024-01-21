@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import styles from '../style/LoginForm.modul.scss'; // SCSS 모듈 임포트
 const LoginForm = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
@@ -34,11 +34,11 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="p-4">
+    <form onSubmit={handleSubmit} className={`p-4 ${styles.loginForm}`}>
       <div className="mb-3">
         <input
           type="id"
-          className="form-control"
+          className={`form-control ${styles.formControl}`}
           value={id}
           onChange={(e) => setId(e.target.value)}
           placeholder="아이디 입력"
@@ -47,14 +47,14 @@ const LoginForm = () => {
       <div className="mb-3">
         <input
           type="password"
-          className="form-control"
+          className={`form-control ${styles.formControl}`}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="비밀번호 입력"
         />
       </div>
-      <button className="btn btn-success" type="submit">
-        로그인하기
+      <button className={`btn btn-success ${styles.btnSuccess}`} type="submit">
+        로그인
       </button>
     </form>
   );

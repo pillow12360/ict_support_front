@@ -6,12 +6,7 @@ import HomeButton from '../../layout/HomeButton';
 // porps 로 넘겨받은 setCompalint로 home 상태 변경
 
 function ComplaintForm(props) {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [building, setBuilding] = useState('');
-
-  const [complaintsObj, setCompalintObj] = useState({
-    id: 1,
+  const [complaint, setComplaint] = useState({
     title: '',
     content: '',
     building: '',
@@ -25,7 +20,15 @@ function ComplaintForm(props) {
     // } catch {};
 
     // api
-    console.log({ title, content, building });
+    console.log(complaint);
+  };
+
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setComplaint((prevComplaint) => ({
+      ...prevComplaint,
+      [id]: value,
+    }));
   };
 
   return (
@@ -38,8 +41,8 @@ function ComplaintForm(props) {
           type="text"
           className="form-control"
           id="title"
-          value={complaintsObj.title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={complaint.title}
+          onChange={handleChange}
         />
       </div>
 
@@ -51,8 +54,8 @@ function ComplaintForm(props) {
           className="form-control"
           id="content"
           rows="3"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
+          value={complaint.content}
+          onChange={handleChange}
         ></textarea>
       </div>
       <div className="mb-3">
@@ -62,8 +65,8 @@ function ComplaintForm(props) {
         <select
           className="form-select"
           id="building"
-          value={building}
-          onChange={(e) => setBuilding(e.target.value)}
+          value={complaint.building}
+          onChange={handleChange}
         >
           <option value="">건물을 선택하세요</option>
           <option value="building1">배양관</option>
