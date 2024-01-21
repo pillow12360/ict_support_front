@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
-import HomeButton from '../HomeButton';
+import HomeButton from '../layout/HomeButton';
 import styles from './AuthScreen.module.scss';
 
 const AuthScreen = () => {

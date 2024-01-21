@@ -1,5 +1,5 @@
-import React from "react";
-import HomeButton from "../HomeButton";
+import React from 'react';
+import HomeButton from '../layout/HomeButton';
 
 const NotFound = () => {
   return (
