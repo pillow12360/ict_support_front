@@ -16,9 +16,6 @@ const Nav = () => {
         <li>
           <Link to="/complaintlist">접수된 민원 조회</Link>
         </li>
-        <li>
-          <Link to="/">문의 하기</Link>
-        </li>
       </ul>
     </nav>
   );
