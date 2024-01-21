@@ -13,7 +13,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/authscreen" element={<AuthScreen />} />
-        <Route path="/complaints" element={<ComplaintForm />} />
+        <Route path="/complaintform" element={<ComplaintForm />} />
         <Route path="*" element={<NotFound />}></Route>
         {/* 추가 라우트 */}
       </Routes>

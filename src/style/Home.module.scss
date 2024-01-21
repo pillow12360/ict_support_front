@@ -1,0 +1,54 @@
+// styles/Home.module.scss
+
+$primary-color: #4a90e2; // 주 색상
+$secondary-color: #f8f8f8; // 보조 색상
+$text-color: #333; // 텍스트 색상
+$font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif; // 폰트 스택
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: $secondary-color;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+
+  h1 {
+    color: $text-color;
+    font-family: $font-stack;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  p {
+    color: $text-color;
+    font-family: $font-stack;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: center;
+
+    a {
+      display: inline-block;
+      background-color: $primary-color;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-family: $font-stack;
+      transition: background-color 0.3s;
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+}

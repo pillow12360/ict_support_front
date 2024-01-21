@@ -5,13 +5,16 @@ import '../style/Nav.scss';
 const Nav = () => {
   return (
     <nav>
-      서일대학교 ICT 지원실 민원 처리
+      <Link to="/">서일대학교 ICT 지원실</Link>
       <ul>
         <li>
-          <Link to="/">홈</Link>
+          <Link to="/authscreen">로그인/회원가입</Link>
         </li>
         <li>
-          <Link to="/">민원 접수</Link>
+          <Link to="/complaintform">민원 접수</Link>
+        </li>
+        <li>
+          <Link to="/complaintlist">접수된 민원 조회</Link>
         </li>
         <li>
           <Link to="/">문의 하기</Link>
