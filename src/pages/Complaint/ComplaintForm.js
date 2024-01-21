@@ -75,6 +75,7 @@ function ComplaintForm(props) {
       <button type="submit" className="btn btn-success">
         민원 제출 하기
       </button>
+      <HomeButton />
     </form>
   );
 }
