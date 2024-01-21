@@ -1,5 +1,5 @@
-import React from "react";
-import "./ComplaintTemplate.scss";
+import React from 'react';
+import '../style/ComplaintTemplate.scss';
 
 const ComplaintTemplate = ({ children }) => {
   return (

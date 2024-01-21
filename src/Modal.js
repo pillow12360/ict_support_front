@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Modal.module.scss';
+import styles from './sstyle/Modal.module.scss';
 const Modal = ({ show, onClose, children }) => {
   if (!show) {
     return null;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 import HomeButton from '../layout/HomeButton';
-import styles from './AuthScreen.module.scss';
+import styles from '../style/AuthScreen.module.scss';
 
 const AuthScreen = () => {
   const [showSignup, setShowSignup] = useState(false);

@@ -16,10 +16,10 @@ const Home = () => {
       <Link to="/authscreen" className="btn btn-secondary mr-2">
         로그인/회원가입
       </Link>
-      <Link to="/complaints" className="btn">
+      <Link to="/complaints" className="btn btn-secondary mr-2">
         민원 접수
       </Link>
-      <Link to="/complaintList" className="btn">
+      <Link to="/complaintList" className="btn btn-secondary mr-2">
         접수된 민원 조회
       </Link>
     </div>

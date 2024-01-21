@@ -1,6 +1,6 @@
 import React from 'react';
 import ComplaintListItem from './ComplaintListItem';
-import './ComplaintList.scss';
+import '../style/ComplaintList.scss';
 
 const ComplaintList = ({ complaints }) => {
   return (
