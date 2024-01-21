@@ -2,17 +2,27 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomeButton from '../../HomeButton';
 
-function ComplaintForm() {
+// 3개의 state => 1개의 객체 state
+// porps 로 넘겨받은 setCompalint로 home 상태 변경
+
+function ComplaintForm(props) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [building, setBuilding] = useState('');
 
+  const [complaintsObj, setCompalintObj] = useState({
+    id: 1,
+    title: '',
+    content: '',
+    building: '',
+  });
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    try {
-      fetch();
-    } catch {}
+    // try {
+    //   fetch();
+    // } catch {};
 
     // api
     console.log({ title, content, building });
@@ -28,7 +38,7 @@ function ComplaintForm() {
           type="text"
           className="form-control"
           id="title"
-          value={title}
+          value={complaintsObj.title}
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
@@ -65,7 +75,6 @@ function ComplaintForm() {
       <button type="submit" className="btn btn-success">
         민원 제출 하기
       </button>
-      <HomeButton />
     </form>
   );
 }

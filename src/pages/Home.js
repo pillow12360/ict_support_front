@@ -4,10 +4,10 @@ import Modal from '../Modal';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap CSS import
 import ComplaintTemplate from './Complaint/ComplaintTemplate';
 import ComplaintList from './Complaint/ComplaintList';
+import ComplaintForm from './Complaint/ComplaintForm';
 
 const Home = () => {
-  const [showModal, setShowModal] = useState(false);
-
+  
   const [complaints, setComplaints] = useState([
     {
       id: 1,
@@ -19,13 +19,19 @@ const Home = () => {
       id: 2,
       title: '안녕2',
       content: '테스트3',
-      building: '배양관123',
+      building: '호천관',
     },
     {
       id: 3,
       title: '안녕3',
       content: '테스트2',
-      building: '배양관31',
+      building: '흥학관',
+    },
+    {
+      id: 4,
+      title: '하이',
+      content: '테스트5',
+      building: '서일관',
     },
   ]);
 
@@ -40,23 +46,14 @@ const Home = () => {
       <Link to="/authscreen" className="btn btn-secondary mr-2">
         로그인/회원가입
       </Link>
-      <div>
-        <Link to="/complaints" className="btn btn-light">
-          민원 접수
-        </Link>
 
-        <button
-          className="btn btn-info mr-2"
-          onClick={() => setShowModal(true)}
-        >
-          민원 조회
-        </button>
-        <Modal show={showModal} onClose={() => setShowModal(false)}>
-          <ComplaintTemplate>
-            <ComplaintList complaints={complaints} />
-          </ComplaintTemplate>
-        </Modal>
-      </div>
+      <Link to="/complaints" className="btn">
+        민원 접수
+      </Link>
+
+      <Link to="/complaintList" className="btn">
+        접수된 민원 조회
+      </Link>
     </div>
   );
 };

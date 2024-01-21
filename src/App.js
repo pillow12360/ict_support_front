@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import AuthScreen from './auth/AuthScreen'; // 가정: 로그인 폼 컴포넌트의 경로
 import NotFound from './pages/NotFound';
 import ComplaintForm from './pages/Complaint/ComplaintForm';
+import ComplaintList from './pages/Complaint/ComplaintList';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/authscreen" element={<AuthScreen />} />
         <Route path="/complaints" element={<ComplaintForm />} />
+        <Route path="/showcomplant" element={<ShowComplaints />} />
         <Route path="*" element={<NotFound />}></Route>
         {/* 추가 라우트 */}
       </Routes>
