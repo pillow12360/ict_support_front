@@ -5,6 +5,7 @@ import AuthScreen from './auth/AuthScreen'; // 가정: 로그인 폼 컴포넌�
 import NotFound from './pages/NotFound';
 import ComplaintForm from './pages/Complaint/ComplaintForm';
 import Nav from './layout/Nav';
+import Footer from './layout/Footer';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="*" element={<NotFound />}></Route>
         {/* 추가 라우트 */}
       </Routes>
+      <Footer />
     </Router>
   );
 };
