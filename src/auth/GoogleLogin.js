@@ -23,7 +23,9 @@ const GoogleLogin = () => {
 
   return (
     <div>
-      <button onClick={handleAuth}>Google 로그인</button>
+      <button className="btn" onClick={handleAuth}>
+        Google 로그인
+      </button>
     </div>
   );
 };
