@@ -9,6 +9,7 @@ import Nav from './layout/Nav';
 import Footer from './layout/Footer';
 import './App.css';
 import { AuthProvider } from './AuthContext';
+import ComplaintFormFirebase from './pages/Complaint/ComplaintFormFirebase';
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
             <Route path="/" element={<First />} />
             <Route path="/home" element={<Home />} />
             <Route path="/authscreen" element={<AuthScreen />} />
-            <Route path="/complaintform" element={<ComplaintForm />} />
+            <Route path="/complaintform" element={<ComplaintFormFirebase />} />
             <Route path="*" element={<NotFound />}></Route>
             {/* 추가 라우트 */}
           </Routes>
