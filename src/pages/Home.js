@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../style/Home.module.scss'; // SCSS 모듈 임포트
+import { AuthContext } from '../AuthContext';
 
 const Home = () => {
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <div className={styles.container}>
       <h1>ICT 지원실 민원 처리</h1>
@@ -11,6 +14,8 @@ const Home = () => {
         문제 해결을 위한 자주 묻는 질문, 사용자 가이드 등을 찾아볼 수 있습니다.
       </p>
 
+      <h1>환영합니다 {currentUser.displayName}님!</h1>
+      <p>무엇을 도와드릴까요? 원하는 기능을 선택하여주세요</p>
       <div className={styles.buttonGroup}>
         <Link to="/complaintform" className={styles.btn}>
           민원 접수 하기

@@ -12,6 +12,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+
   const auth = getAuth();
   const navigate = useNavigate();
   const location = useLocation();
