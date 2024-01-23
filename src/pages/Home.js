@@ -12,8 +12,11 @@ const Home = () => {
       </p>
 
       <div className={styles.buttonGroup}>
-        <Link to="/authscreen" className={styles.btn}>
-          로그인/회원가입
+        <Link to="/complaintform" className={styles.btn}>
+          민원 접수 하기
+        </Link>
+        <Link to="/complaintlist" className={styles.btn}>
+          민원 조회
         </Link>
       </div>
     </div>

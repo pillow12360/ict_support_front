@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../style/Nav.scss';
+import GoogleLogin from '../auth/GoogleLogin';
 
 const Nav = () => {
   return (
@@ -15,6 +16,9 @@ const Nav = () => {
         </li>
         <li>
           <Link to="/complaintlist">접수된 민원 조회</Link>
+        </li>
+        <li>
+          <GoogleLogin />
         </li>
       </ul>
     </nav>
