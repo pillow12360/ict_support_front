@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Main = () => {
+const First = () => {
   return (
     <div>
       <h1>메인페이지 입니다.</h1>
@@ -8,4 +8,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default First;

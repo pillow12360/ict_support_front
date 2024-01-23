@@ -16,11 +16,23 @@ export const AuthProvider = ({ children }) => {
 
   const loginWithGoogle = () => {
     const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider);
+    return signInWithPopup(auth, provider)
+      .then(() => {
+        // 성공적인 로그인 처리
+      })
+      .catch((error) => {
+        // 에러 처리
+      });
   };
 
   const logout = () => {
-    return signOut(auth);
+    return signOut(auth)
+      .then(() => {
+        // 성공적인 로그아웃 처리
+      })
+      .catch((error) => {
+        // 에러 처리
+      });
   };
 
   useEffect(() => {
