@@ -16,11 +16,10 @@ function ComplaintForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // try {
-    //   fetch();
-    // } catch {};
+    try {
+      fetch();
+    } catch {}
 
-    // api
     console.log(complaint);
   };
 
