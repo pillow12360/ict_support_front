@@ -7,6 +7,7 @@ import HomeButton from '../../layout/HomeButton';
 
 function ComplaintForm(props) {
   const [complaint, setComplaint] = useState({
+    user: '',
     title: '',
     content: '',
     building: '',
