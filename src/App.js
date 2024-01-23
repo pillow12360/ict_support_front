@@ -17,8 +17,8 @@ const App = () => {
         <div className="background">
           <Nav />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/first" element={<First />} />
+            <Route path="/" element={<First />} />
+            <Route path="/Home" element={<Home />} />
             <Route path="/authscreen" element={<AuthScreen />} />
             <Route path="/complaintform" element={<ComplaintForm />} />
             <Route path="*" element={<NotFound />}></Route>
