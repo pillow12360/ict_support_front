@@ -9,13 +9,21 @@ const GoogleLogin = () => {
 
   const handleAuth = () => {
     signInWithPopup(auth, provider)
-      .then((result) => {})
-      .catch((error) => {});
+      .then((result) => {
+        const user = result.user;
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+
+        console.log('로그인한 사용자 : ', user.displayName);
+      })
+      .catch((error) => {
+        console.error('로그인 에러', error.message);
+      });
   };
 
   return (
     <div>
-      <button onClick={handleAuth}>구글 로그인</button>
+      <button onClick={handleAuth}>Google 로그인</button>
     </div>
   );
 };

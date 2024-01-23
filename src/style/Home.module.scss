@@ -18,6 +18,7 @@ $font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif; // 폰트 스택
     font-family: $font-stack;
     text-align: center;
     margin-bottom: 20px;
+    font-size : 35px;
   }
 
   p {
@@ -25,12 +26,34 @@ $font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif; // 폰트 스택
     font-family: $font-stack;
     line-height: 1.6;
     text-align: center;
-    margin-bottom: 20px;
+    margin-top: 50px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
+
+  .btn {
+    display: inline-block;
+    background-color: $primary-color;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: $font-stack;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background-color 0.3s;
+  
+    &:hover {
+      background-color: darken($primary-color, 10%);
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+  }
+
 
   .button-group {
     display: flex;
     justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // 버튼 그림자 추가
+
 
     a {
       display: inline-block;
@@ -40,14 +63,18 @@ $font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif; // 폰트 스택
       text-decoration: none;
       border-radius: 4px;
       font-family: $font-stack;
-      transition: background-color 0.3s;
+      transform: scale(1.05); // 호버 시 버튼 확대
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
       &:not(:last-child) {
         margin-right: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // 버튼 그림자 추가
       }
 
       &:hover {
         background-color: darken($primary-color, 10%);
+        transform: scale(1.05); // 호버 시 버튼 확대
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       }
     }
   }
