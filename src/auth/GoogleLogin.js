@@ -1,42 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../AuthContext';
 import {
-  getAuth,
   signInWithPopup,
   GoogleAuthProvider,
-  onAuthStateChanged,
   signOut,
+  getAuth,
 } from 'firebase/auth';
-import { useNavigate } from '../../node_modules/react-router-dom/dist/index';
 
 const GoogleLogin = () => {
-  const navigate = useNavigate();
-  const provider = new GoogleAuthProvider();
+  const { currentUser, setCurrentUser } = useContext(AuthContext);
   const auth = getAuth();
-
-  const [userData, setUserData] = useState(null); // 로그인 상태 관리를 위해 null로 초기화
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // 사용자가 로그인한 경우
-        setUserData(user);
-        navigate('/');
-      } else {
-        // 사용자가 로그아웃한 경우
-        setUserData(null);
-        navigate('/authscreen');
-      }
-    });
-
-    // 컴포넌트가 언마운트될 때 리스너를 정리합니다.
-    return () => unsubscribe();
-  }, [auth, navigate]);
+  const provider = new GoogleAuthProvider();
+  // 로그인 상태 관리를 위해 null로 초기화
 
   const handleLogOut = () => {
     signOut(auth)
       .then(() => {
-        setUserData(null);
-        navigate('/');
+        setCurrentUser(null);
       })
       .catch((error) => {
         alert(error.message);
@@ -46,7 +26,7 @@ const GoogleLogin = () => {
   const handleAuth = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        setUserData(result.user);
+        setCurrentUser(result.user);
         console.log('로그인한 사용자 : ', result.user.displayName);
       })
       .catch((error) => {
@@ -57,7 +37,7 @@ const GoogleLogin = () => {
 
   return (
     <div>
-      {userData ? (
+      {currentUser ? (
         <button className="btn" onClick={handleLogOut}>
           Google 로그아웃
         </button>

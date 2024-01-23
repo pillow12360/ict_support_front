@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../style/Nav.scss';
 import GoogleLogin from '../auth/GoogleLogin';
+import { AuthContext } from '../AuthContext';
 
 const Nav = () => {
   return (

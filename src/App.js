@@ -8,23 +8,26 @@ import ComplaintForm from './pages/Complaint/ComplaintForm';
 import Nav from './layout/Nav';
 import Footer from './layout/Footer';
 import './App.css';
+import { AuthProvider } from './AuthContext';
 
 const App = () => {
   return (
-    <Router>
-      <div className="background">
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/main" element={<Main />} />
-          <Route path="/authscreen" element={<AuthScreen />} />
-          <Route path="/complaintform" element={<ComplaintForm />} />
-          <Route path="*" element={<NotFound />}></Route>
-          {/* 추가 라우트 */}
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="background">
+          <Nav />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/main" element={<Main />} />
+            <Route path="/authscreen" element={<AuthScreen />} />
+            <Route path="/complaintform" element={<ComplaintForm />} />
+            <Route path="*" element={<NotFound />}></Route>
+            {/* 추가 라우트 */}
+          </Routes>
+          <Footer />
+        </div>
+      </Router>
+    </AuthProvider>
   );
 };
 

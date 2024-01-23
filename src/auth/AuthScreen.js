@@ -4,6 +4,7 @@ import LoginForm from './LoginForm';
 import HomeButton from '../layout/HomeButton';
 import styles from '../style/AuthScreen.module.scss';
 import GoogleLogin from './GoogleLogin';
+import { AuthContext } from '../AuthContext';
 
 const AuthScreen = () => {
   const [showSignup, setShowSignup] = useState(false);
