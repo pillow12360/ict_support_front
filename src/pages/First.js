@@ -13,7 +13,7 @@ const First = () => {
       </p>
 
       <div className={styles.buttonGroup}>
-        로그인 후 이용 가능 <GoogleLogin />
+        로그인 후 서비스 이용 가능 <GoogleLogin />
       </div>
     </div>
   );

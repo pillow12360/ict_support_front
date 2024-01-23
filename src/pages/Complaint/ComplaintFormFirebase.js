@@ -3,6 +3,8 @@ import HomeButton from '../../layout/HomeButton';
 import db from '../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import { AuthContext } from '../../AuthContext';
+import styles from '../../style/ComplaintForm.module.scss';
+
 // 3개의 state => 1개의 객체 state
 // porps 로 넘겨받은 setCompalint로 home 상태 변경
 
@@ -62,26 +64,27 @@ function ComplaintFormFirebase(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="container mt-4">
-      <div className="mb-3">
-        <label htmlFor="title" className="form-label">
+    <form onSubmit={handleSubmit} className={styles.container}>
+      <div className={styles.mb3}>
+        <label htmlFor="title" className={styles.label}>
           민원 제목
         </label>
         <input
           type="text"
-          className="form-control"
+          className={styles.input}
           id="title"
           value={complaint.title}
           onChange={handleChange}
         />
+        {errors.title && <div className={styles.error}>{errors.title}</div>}
       </div>
 
-      <div className="mb-3">
-        <label htmlFor="category" className="form-label">
+      <div className={styles.mb3}>
+        <label htmlFor="category" className={styles.label}>
           민원 카테고리
         </label>
         <select
-          className="form-select"
+          className={styles.select}
           id="category"
           value={complaint.category}
           onChange={handleChange}
@@ -92,26 +95,31 @@ function ComplaintFormFirebase(props) {
           <option value="category3">실습실 시설</option>
           <option value="category4">기타</option>
         </select>
+        {errors.category && (
+          <div className={styles.error}>{errors.category}</div>
+        )}
       </div>
 
-      <div className="mb-3">
-        <label htmlFor="content" className="form-label">
+      <div className={styles.mb3}>
+        <label htmlFor="content" className={styles.label}>
           민원 내용
         </label>
         <textarea
-          className="form-control"
+          className={styles.textarea}
           id="content"
           rows="3"
           value={complaint.content}
           onChange={handleChange}
         ></textarea>
+        {errors.content && <div className={styles.error}>{errors.content}</div>}
       </div>
-      <div className="mb-3">
-        <label htmlFor="building" className="form-label">
+
+      <div className={styles.mb3}>
+        <label htmlFor="building" className={styles.label}>
           건물 선택
         </label>
         <select
-          className="form-select"
+          className={styles.select}
           id="building"
           value={complaint.building}
           onChange={handleChange}
@@ -122,11 +130,14 @@ function ComplaintFormFirebase(props) {
           <option value="building3">흥학관</option>
           {/* 여기에 추가적인 건물 옵션을 넣을 수 있습니다 */}
         </select>
+        {errors.building && (
+          <div className={styles.error}>{errors.building}</div>
+        )}
       </div>
-      <button type="submit" className="btn btn-success">
+
+      <button type="submit" className={styles.button}>
         민원 제출 하기
       </button>
-      <HomeButton />
     </form>
   );
 }
