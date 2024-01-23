@@ -1,6 +1,5 @@
-// AuthContext.js
 import React, { createContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   getAuth,
   signInWithPopup,
@@ -15,22 +14,19 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const auth = getAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const loginWithGoogle = () => {
     const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider)
-      .then(() => {
-        navigate('/home'); // 로그인 성공 시 홈으로 이동
-      })
-      .catch((error) => {
-        // 로그인 에러 처리
-      });
+    return signInWithPopup(auth, provider).catch((error) => {
+      // 로그인 에러 처리
+    });
   };
 
   const logout = () => {
     return signOut(auth)
       .then(() => {
-        navigate('/'); // 로그아웃 성공 시 초기 루트로 이동
+        navigate('/');
       })
       .catch((error) => {
         // 로그아웃 에러 처리
@@ -40,14 +36,14 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-      if (user) {
-        navigate('/home'); // 로그인 상태 확인 시 홈으로 이동
-      } else {
-        navigate('/'); // 로그아웃 상태 확인 시 초기 루트로 이동
+      if (user && location.pathname === '/') {
+        navigate('/home');
+      } else if (!user) {
+        navigate('/');
       }
     });
     return () => unsubscribe();
-  }, [navigate]);
+  }, [navigate, location.pathname]);
 
   return (
     <AuthContext.Provider value={{ currentUser, loginWithGoogle, logout }}>
