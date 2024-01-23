@@ -6,7 +6,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <p>© 2024 ICT 프로젝트</p>
+        <p>© 2024 서일대학교 ICT 민원 프로젝트</p>
         <ul className="footer-links">
           <li>
             <Link to="/about">About Us</Link>
