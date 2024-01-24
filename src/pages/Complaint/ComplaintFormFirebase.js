@@ -17,9 +17,11 @@ function ComplaintFormFirebase(props) {
   const validateForm = () => {
     let newErrors = {};
     if (!complaint.title) newErrors.title = '제목을 입력해주세요.';
+    if (!complaint.major) newErrors.major = '학과를 입력해주세요.';
     if (!complaint.content) newErrors.content = '내용을 입력해주세요.';
     if (!complaint.building) newErrors.building = '건물을 선택해주세요.';
     if (!complaint.category) newErrors.category = '카테고리를 선택해주세요.';
+    if (!complaint.room) newErrors.room = '강의실의 호실을 입력해주세요.';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -27,6 +29,7 @@ function ComplaintFormFirebase(props) {
 
   const [complaint, setComplaint] = useState({
     title: '',
+    major: '',
     content: '',
     building: '',
     category: '',
@@ -49,6 +52,7 @@ function ComplaintFormFirebase(props) {
       await addDoc(collection(db, 'complaints'), {
         ...complaint,
         userId: currentUser.uid,
+        userName: currentUser.displayName,
         timestamp: new Date(),
       }).then(
         openModal(
@@ -92,6 +96,20 @@ function ComplaintFormFirebase(props) {
           onChange={handleChange}
         />
         {errors.title && <div className={styles.error}>{errors.title}</div>}
+      </div>
+
+      <div className={styles.mb3}>
+        <label htmlFor="major" className={styles.label}>
+          학과
+        </label>
+        <input
+          type="text"
+          className={styles.input}
+          id="major"
+          value={complaint.major}
+          onChange={handleChange}
+        />
+        {errors.title && <div className={styles.error}>{errors.major}</div>}
       </div>
 
       <div className={styles.mb3}>
@@ -140,14 +158,34 @@ function ComplaintFormFirebase(props) {
           onChange={handleChange}
         >
           <option value="">건물을 선택하세요</option>
-          <option value="building1">배양관</option>
-          <option value="building2">호천관</option>
-          <option value="building3">흥학관</option>
+          <option value="BY">배양관</option>
+          <option value="HK">호천관</option>
+          <option value="HH">흥학관</option>
+          <option value="JD">지덕관</option>
+          <option value="LB">도서관</option>
+          <option value="NR">누리관</option>
+          <option value="SE">서일관</option>
+          <option value="SJ">세종관</option>
           {/* 여기에 추가적인 건물 옵션을 넣을 수 있습니다 */}
         </select>
         {errors.building && (
           <div className={styles.error}>{errors.building}</div>
         )}
+      </div>
+
+      <div className={styles.mb3}>
+        <label htmlFor="room" className={styles.label}>
+          강의실 호실 (예: 101호)
+        </label>
+        <input
+          type="number"
+          className={styles.input}
+          id="room"
+          value={complaint.room}
+          onChange={handleChange}
+          placeholder="예: 101"
+        />
+        {errors.room && <div className={styles.error}>{errors.room}</div>}
       </div>
 
       <button type="submit" className={styles.button}>
