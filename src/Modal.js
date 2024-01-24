@@ -1,18 +1,20 @@
 import React from 'react';
-import styles from './sstyle/Modal.module.scss';
-const Modal = ({ show, onClose, children }) => {
-  if (!show) {
-    return null;
-  }
+import { useModal } from './ModalContext';
+import styles from './style/Modal.module.scss';
+
+function Modal({ children }) {
+  const { isModalOpen, closeModal } = useModal();
+
+  if (!isModalOpen) return null;
 
   return (
-    <div className={styles.modalOverlay} onClick={onClose}>
+    <div className={styles.modalBackground} onClick={closeModal}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={onClose}></button>
         {children}
+        <button onClick={closeModal}>닫기</button>
       </div>
     </div>
   );
-};
+}
 
 export default Modal;

@@ -10,23 +10,29 @@ import Footer from './layout/Footer';
 import './App.css';
 import { AuthProvider } from './AuthContext';
 import ComplaintFormFirebase from './pages/Complaint/ComplaintFormFirebase';
+import { ModalProvider } from './ModalContext';
 
 const App = () => {
   return (
     <Router>
       <AuthProvider>
-        <div className="background">
-          <Nav />
-          <Routes>
-            <Route path="/" element={<First />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/authscreen" element={<AuthScreen />} />
-            <Route path="/complaintform" element={<ComplaintFormFirebase />} />
-            <Route path="*" element={<NotFound />}></Route>
-            {/* 추가 라우트 */}
-          </Routes>
-          <Footer />
-        </div>
+        <ModalProvider>
+          <div className="background">
+            <Nav />
+            <Routes>
+              <Route path="/" element={<First />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/authscreen" element={<AuthScreen />} />
+              <Route
+                path="/complaintform"
+                element={<ComplaintFormFirebase />}
+              />
+              <Route path="*" element={<NotFound />}></Route>
+              {/* 추가 라우트 */}
+            </Routes>
+            <Footer />
+          </div>
+        </ModalProvider>
       </AuthProvider>
     </Router>
   );

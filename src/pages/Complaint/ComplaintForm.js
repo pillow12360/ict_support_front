@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomeButton from '../../layout/HomeButton';
-
 // 3개의 state => 1개의 객체 state
 // porps 로 넘겨받은 setCompalint로 home 상태 변경
 

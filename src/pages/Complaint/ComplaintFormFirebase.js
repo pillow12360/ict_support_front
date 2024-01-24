@@ -4,12 +4,15 @@ import db from '../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import { AuthContext } from '../../AuthContext';
 import styles from '../../style/ComplaintForm.module.scss';
-
+import { useModal } from '../../ModalContext';
+import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
 // 3개의 state => 1개의 객체 state
 // porps 로 넘겨받은 setCompalint로 home 상태 변경
 
 function ComplaintFormFirebase(props) {
   const { currentUser } = useContext(AuthContext);
+  const { openModal, closeModal } = useModal();
+  const navigate = useNavigate();
 
   const [errors, setErrors] = useState({}); // 유효성 검사 (사용자 입력값에 빈 항목 체크)
   const validateForm = () => {
@@ -48,7 +51,20 @@ function ComplaintFormFirebase(props) {
         ...complaint,
         userId: currentUser.uid,
         timestamp: new Date(),
-      });
+      }).then(
+        openModal(
+          <p>
+            민원 접수 완료 <br /> 민원을 접수하여 주셔서 감사합니다.
+            <br />
+            3초 후 홈으로 돌아갑니다.
+          </p>,
+        ),
+        setTimeout(() => {
+          closeModal();
+          navigate('/home');
+        }, 3000), // 3초 후 홈으로 리다이렉트
+      );
+
       console.log('민원이 성공적으로 접수 되었습니다.');
     } catch (error) {
       console.error('민원 추가 중 오류 발생:', error);
@@ -138,6 +154,14 @@ function ComplaintFormFirebase(props) {
       <button type="submit" className={styles.button}>
         민원 제출 하기
       </button>
+      <div>
+        <button
+          className={styles.button}
+          onClick={() => openModal(<p>모달 내용</p>)}
+        >
+          모달 열기
+        </button>
+      </div>
     </form>
   );
 }
