@@ -11,7 +11,9 @@ function Modal({ children }) {
     <div className={styles.modalBackground} onClick={closeModal}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         {children}
-        <button onClick={closeModal}>닫기</button>
+        <button className={styles.closeButton} onClick={closeModal}>
+          닫기
+        </button>
       </div>
     </div>
   );

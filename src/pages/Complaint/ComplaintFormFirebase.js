@@ -154,14 +154,6 @@ function ComplaintFormFirebase(props) {
       <button type="submit" className={styles.button}>
         민원 제출 하기
       </button>
-      <div>
-        <button
-          className={styles.button}
-          onClick={() => openModal(<p>모달 내용</p>)}
-        >
-          모달 열기
-        </button>
-      </div>
     </form>
   );
 }

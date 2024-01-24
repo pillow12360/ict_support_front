@@ -49,15 +49,48 @@
       opacity: 1;
     }
   }
+  p {
+    color: #333; // 텍스트 색상
+    font-size: 16px; // 폰트 크기
+    line-height: 1.5; // 줄 간격
+    margin-bottom: 15px; // 하단 여백
+  }
+
+  a {
+    color: #007bff; // 링크 색상
+    text-decoration: none; // 밑줄 제거
+
+    &:hover {
+      text-decoration: underline; // 호버 시 밑줄
+    }
+  }
+
+  button {
+    background-color: #007bff; // 버튼 배경색
+    color: white; // 버튼 텍스트 색상
+    border: none;
+    padding: 10px 15px; // 버튼 패딩
+    border-radius: 4px; // 버튼 모서리 둥글게
+    cursor: pointer;
+    margin-top: 10px; // 상단 여백
+
+    &:hover {
+      background-color: #0056b3; // 호버 시 배경색 변경
+    }
+  }
 }
 
 // 닫기 버튼 스타일
 .closeButton {
-  background: none;
+  background: #007bff; // 버튼 배경색
+  color: white; // 버튼 텍스트 색상
   border: none;
+  padding: 10px 15px; // 버튼 패딩
+  border-radius: 4px; // 버튼 모서리 둥글게
   cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 20px;
+  margin-top: 20px; // 상단 여백
+
+  &:hover {
+    background-color: #0056b3; // 호버 시 배경색 변경
+  }
 }
