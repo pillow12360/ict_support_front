@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import HomeButton from '../../layout/HomeButton';
 import db from '../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import { AuthContext } from '../../AuthContext';
