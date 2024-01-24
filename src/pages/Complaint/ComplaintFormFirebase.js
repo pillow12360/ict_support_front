@@ -5,8 +5,6 @@ import { AuthContext } from '../../AuthContext';
 import styles from '../../style/ComplaintForm.module.scss';
 import { useModal } from '../../ModalContext';
 import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
-// 3개의 state => 1개의 객체 state
-// porps 로 넘겨받은 setCompalint로 home 상태 변경
 
 function ComplaintFormFirebase(props) {
   const { currentUser } = useContext(AuthContext);
@@ -57,9 +55,10 @@ function ComplaintFormFirebase(props) {
       }).then(
         openModal(
           <p>
-            민원 접수 완료 <br /> 민원을 접수하여 주셔서 감사합니다.
+            민원 접수 완료 <br /> 민원을 제출하여 주셔서 감사합니다. 빠른 시일
+            내에 처리하도록 하겠습니다.
             <br />
-            3초 후 홈으로 돌아갑니다.
+            3초 후 자동으로 홈으로 돌아갑니다.
           </p>,
         ),
         setTimeout(() => {
@@ -123,10 +122,10 @@ function ComplaintFormFirebase(props) {
           onChange={handleChange}
         >
           <option value="">카테고리를 선택하세요</option>
-          <option value="category1">하드웨어</option>
-          <option value="category2">소프트웨어</option>
-          <option value="category3">실습실 시설</option>
-          <option value="category4">기타</option>
+          <option value="HW">하드웨어</option>
+          <option value="SW">소프트웨어</option>
+          <option value="facility">실습실 시설</option>
+          <option value="etc">기타</option>
         </select>
         {errors.category && (
           <div className={styles.error}>{errors.category}</div>
@@ -143,6 +142,7 @@ function ComplaintFormFirebase(props) {
           rows="3"
           value={complaint.content}
           onChange={handleChange}
+          placeholder="민원을 작성해 주세요"
         ></textarea>
         {errors.content && <div className={styles.error}>{errors.content}</div>}
       </div>
