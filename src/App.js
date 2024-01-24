@@ -23,8 +23,9 @@ const App = () => {
               <Route path="/" element={<First />} />
               <Route path="/home" element={<Home />} />
               <Route path="/authscreen" element={<AuthScreen />} />
+              <Route path="/complaintform" element={<ComplaintForm />} />
               <Route
-                path="/complaintform"
+                path="/complaintformfirebase"
                 element={<ComplaintFormFirebase />}
               />
               <Route path="*" element={<NotFound />}></Route>

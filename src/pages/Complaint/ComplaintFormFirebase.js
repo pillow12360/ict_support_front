@@ -31,6 +31,7 @@ function ComplaintFormFirebase(props) {
     content: '',
     building: '',
     category: '',
+    room: '',
   });
 
   async function handleSubmit(event) {

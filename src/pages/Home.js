@@ -18,7 +18,7 @@ const Home = () => {
         <h2>환영합니다 {currentUser.displayName}님!</h2>
         <p>무엇을 도와드릴까요? 원하는 기능을 선택하여주세요</p>
         <div className={styles.buttonGroup}>
-          <Link to="/complaintform" className={styles.btn}>
+          <Link to="/complaintformfirebase" className={styles.btn}>
             민원 접수 하기
           </Link>
           <Link to="/complaintlist" className={styles.btn}>

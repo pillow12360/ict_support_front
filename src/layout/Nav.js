@@ -12,7 +12,10 @@ const Nav = () => {
           <Link to="/authscreen">로그인/회원가입</Link>
         </li> */}
         <li>
-          <Link to="/complaintform">민원 접수</Link>
+          <Link to="/complaintform">민원 접수 1</Link>
+        </li>
+        <li>
+          <Link to="/complaintformfirebase">민원 접수 2</Link>
         </li>
         <li>
           <Link to="/complaintlist">접수된 민원 조회</Link>
