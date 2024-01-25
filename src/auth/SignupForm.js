@@ -3,19 +3,22 @@ import axios from '../../node_modules/axios/index';
 import styles from '../style/SignupForm.module.scss';
 
 const SignupForm = () => {
-  const [name, setName] = useState('');
-  const [id, setId] = useState('');
+  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [buliding, setBuliding] = useState('');
   const [testPass, setTestPass] = useState('');
 
   async function handleSubmit(e) {
     e.preventDefault(); // 버튼 클릭시 기본 동작 막음
 
-    const api = `http://localhost:8080/members`; // URL 수정
+    const api = `http://localhost:8080/api/members`; // URL 수정
 
     axios
-      .post(api, { name: name, id: id, password: password, buliding: buliding })
+      .post(api, {
+        username: userName,
+        email: email,
+        password: password,
+      })
       .then(() => {
         console.log('회원가입 성공'); // 메시지 수정
       })
@@ -29,17 +32,17 @@ const SignupForm = () => {
       <div className={styles.formControl}>
         <input
           type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
           placeholder="이름을 입력하세요"
         />
       </div>
       <div className={styles.formControl}>
         <input
           type="text" // id 대신 text 타입 사용
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-          placeholder="아이디를 입력하세요"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="이메일 입력하세요"
         />
       </div>
       <div className={styles.formControl}>
@@ -56,14 +59,6 @@ const SignupForm = () => {
           value={testPass}
           onChange={(e) => setTestPass(e.target.value)}
           placeholder="비밀번호 확인"
-        />
-      </div>
-      <div className={styles.formControl}>
-        <input
-          type="text"
-          value={buliding}
-          onChange={(e) => setBuliding(e.target.value)}
-          placeholder="건물"
         />
       </div>
       <button className={styles.btnSuccess} type="submit">
