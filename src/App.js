@@ -11,6 +11,9 @@ import './App.css';
 import { AuthProvider } from './AuthContext';
 import ComplaintFormFirebase from './pages/Complaint/ComplaintFormFirebase';
 import { ModalProvider } from './ModalContext';
+import ComplaintList from './pages/Complaint/ComplaintList';
+import LoginForm from './auth/LoginForm';
+import SignupForm from './auth/SignupForm';
 
 const App = () => {
   return (
@@ -23,7 +26,10 @@ const App = () => {
               <Route path="/" element={<First />} />
               <Route path="/home" element={<Home />} />
               <Route path="/authscreen" element={<AuthScreen />} />
+              <Route path="/login" element={<LoginForm />} />
+              <Route path="/signup" element={<SignupForm />} />
               <Route path="/complaintform" element={<ComplaintForm />} />
+              <Route path="/complaintlist" element={<ComplaintList />} />
               <Route
                 path="/complaintformfirebase"
                 element={<ComplaintFormFirebase />}

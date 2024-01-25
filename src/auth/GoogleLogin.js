@@ -9,7 +9,7 @@ const GoogleLogin = () => {
       {currentUser ? (
         // 로그인 상태일 때 로그아웃 버튼 표시
         <button className="btn" onClick={logout}>
-          로그아웃
+          Google 로그아웃
         </button>
       ) : (
         // 로그아웃 상태일 때 로그인 버튼 표시
