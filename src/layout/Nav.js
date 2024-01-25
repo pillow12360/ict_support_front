@@ -15,10 +15,16 @@ const Nav = () => {
           <Link to="/complaintform">민원 접수 1</Link>
         </li>
         <li>
-          <Link to="/complaintformfirebase">민원 접수 2</Link>
+          <Link to="/complaintformfirebase">민원 접수 파이어베이스</Link>
         </li>
         <li>
           <Link to="/complaintlist">접수된 민원 조회</Link>
+        </li>
+        <li>
+          <Link to="/login">로그인</Link>
+        </li>
+        <li>
+          <Link to="/signup">회원가입</Link>
         </li>
         <li>
           <GoogleLogin />
