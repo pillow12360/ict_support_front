@@ -6,16 +6,15 @@ const SignupForm = () => {
   const [name, setName] = useState('');
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-  const [buliding, setBuliding] = useState('');
   const [testPass, setTestPass] = useState('');
 
   async function handleSubmit(e) {
     e.preventDefault(); // 버튼 클릭시 기본 동작 막음
 
-    const api = `http://localhost:8080/members`; // URL 수정
+    const api = `http://localhost:8080/api/members`; // URL 수정
 
     axios
-      .post(api, { name: name, id: id, password: password, buliding: buliding })
+      .post(api, { name: name, id: id, password: password })
       .then(() => {
         console.log('회원가입 성공'); // 메시지 수정
       })
@@ -56,14 +55,6 @@ const SignupForm = () => {
           value={testPass}
           onChange={(e) => setTestPass(e.target.value)}
           placeholder="비밀번호 확인"
-        />
-      </div>
-      <div className={styles.formControl}>
-        <input
-          type="text"
-          value={buliding}
-          onChange={(e) => setBuliding(e.target.value)}
-          placeholder="건물"
         />
       </div>
       <button className={styles.btnSuccess} type="submit">
