@@ -49,9 +49,17 @@
       opacity: 1;
     }
   }
+  h3 {
+    text-align: center; // 가운데 정렬
+    font-size: 28px; // 글자 크기 증가
+    font-weight: 600; // 글자 두께
+    color: #007bff; // 모달 색상과 일치하게 설정
+    margin-bottom: 20px; // 제목과 내용 사이의 여백
+  }
+
   p {
     color: #333; // 텍스트 색상
-    font-size: 16px; // 폰트 크기
+    font-size: 20px; // 폰트 크기
     line-height: 1.5; // 줄 간격
     margin-bottom: 15px; // 하단 여백
   }

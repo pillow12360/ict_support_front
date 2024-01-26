@@ -1,63 +1,109 @@
 import React, { useState } from 'react';
 import axios from '../../node_modules/axios/index';
 import styles from '../style/SignupForm.module.scss';
+import { useModal } from '../ModalContext';
+import { useNavigate } from '../../node_modules/react-router-dom/dist/index';
 
 const SignupForm = () => {
-  const [userName, setUserName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { openModal, closeModal } = useModal(); // 모달 커스텀 훅 사용
+  const navigate = useNavigate(); // 홈으로 리다이렉션을 위한 네비게이트
+
+  const [userData, setUserData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+
   const [testPass, setTestPass] = useState('');
+
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setUserData((prevUserData) => ({
+      ...prevUserData,
+      [id]: value,
+    }));
+  };
 
   async function handleSubmit(e) {
     e.preventDefault(); // 버튼 클릭시 기본 동작 막음
 
+    if (userData.password !== testPass) {
+      console.error('비밀번호가 일치하지 않습니다.');
+      openModal(<p>비밀번호가 일치하지 않습니다. 다시 확인해주세요</p>);
+      return;
+    }
     const api = `http://localhost:8080/api/members`; // URL 수정
 
     axios
-      .post(api, {
-        username: userName,
-        email: email,
-        password: password,
-      })
+      .post(api, userData)
       .then(() => {
         console.log('회원가입 성공'); // 메시지 수정
+        openModal(
+          <>
+            <h3>회원가입 완료</h3>
+            <p>회원가입이 왼료 되었습니다.</p>
+            <p>감사합니다. 3초 후 자동으로 홈으로 돌아갑닏.</p>
+          </>,
+        );
+        setTimeout(() => {
+          navigate('/');
+        }, 3000);
       })
       .catch((error) => {
+        openModal(
+          <>
+            <h3>오류 발생</h3>
+            <p>오류가 발생하여 회원가입에 실패하였습니다.</p>
+          </>,
+        );
         console.error(error);
       });
   }
 
   return (
     <form onSubmit={handleSubmit} className={styles.SignupForm}>
+      <div className={styles.signupHeader}>
+        ICT 민원 처리 <br />
+        회원 가입
+      </div>
       <div className={styles.formControl}>
+        <label htmlFor="userName">이름</label>
         <input
           type="text"
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
+          id="username"
+          value={userData.username}
+          onChange={handleChange}
           placeholder="이름을 입력하세요"
         />
       </div>
       <div className={styles.formControl}>
+        <label htmlFor="email">이메일</label>
         <input
-          type="text" // id 대신 text 타입 사용
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          id="email"
+          type="text"
+          value={userData.email}
+          onChange={handleChange}
           placeholder="이메일 입력하세요"
         />
       </div>
       <div className={styles.formControl}>
+        <label htmlFor="password">비밀번호</label>
         <input
+          id="password"
           type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="비밀번호"
+          value={userData.password}
+          onChange={handleChange}
+          placeholder="비밀번호 입력"
         />
       </div>
+      {/* 비밀번호 확인 입력 필드는 userData에 없으므로, 해당 라벨은 추가하지 않음 */}
       <div className={styles.formControl}>
         <input
           type="password"
           value={testPass}
-          onChange={(e) => setTestPass(e.target.value)}
+          onChange={(e) => {
+            setTestPass(e.target.value);
+          }}
           placeholder="비밀번호 확인"
         />
       </div>
