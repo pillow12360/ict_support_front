@@ -9,10 +9,22 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const api = 'http://localhost:8080/member/'; // API 엔드포인트 주소
   const { openModal } = useModal();
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
     // 백엔드 API로 로그인 요청을 보내는 로직
+
+    if (!id || !password) {
+      openModal(
+        <>
+          <h3>로그인 오류</h3>
+          <p>아이디와 비밀번호를 모두 입력해주세요.</p>
+        </>,
+      );
+      return;
+    }
+
     axios
       .post(api, { id: id, password: password })
       .then(() => {
@@ -22,6 +34,7 @@ const LoginForm = () => {
             <h3>로그인 성공</h3>
           </>,
         );
+        navigate('/');
       })
       .catch((error) => {
         openModal(

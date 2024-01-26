@@ -32,6 +32,22 @@ const SignupForm = () => {
       openModal(<p>비밀번호가 일치하지 않습니다. 다시 확인해주세요</p>);
       return;
     }
+
+    if (
+      !userData.username ||
+      !userData.email ||
+      !userData.password ||
+      !testPass
+    ) {
+      openModal(
+        <>
+          <h3>회원가입 오류</h3>
+          <p>모든 필드를 입력해 주세요.</p>
+        </>,
+      );
+      return;
+    }
+
     const api = `http://localhost:8080/api/members`; // URL 수정
 
     axios
@@ -42,7 +58,7 @@ const SignupForm = () => {
           <>
             <h3>회원가입 완료</h3>
             <p>회원가입이 왼료 되었습니다.</p>
-            <p>감사합니다. 3초 후 자동으로 홈으로 돌아갑닏.</p>
+            <p>감사합니다. 3초 후 자동으로 홈으로 이동합니다.</p>
           </>,
         );
         setTimeout(() => {
