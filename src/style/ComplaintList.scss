@@ -1,9 +1,27 @@
-.ComplaintItem {
+// ComplaintList.scss
 
-  padding : 2rem;
-  display: block;
+.complaint-list-container {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  &:nth-child(even) {
-    background: #f8f9fa;
+  justify-content: center;
+  max-height: 100vh; // 전체 화면 높이
+  overflow-y: auto; // 세로 스크롤
+  padding: 20px;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .complaint {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 80%; // 전체 너비의 80%
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    p {
+      margin: 5px 0;
+    }
   }
 }
