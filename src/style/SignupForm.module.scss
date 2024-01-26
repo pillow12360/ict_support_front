@@ -6,7 +6,7 @@
   max-width: 400px;
   margin: 20px auto;
 
-  .form-control {
+  .formControl { // 클래스 이름 변경
     width: 100%;
     padding: 10px 15px;
     margin-bottom: 15px;
@@ -21,7 +21,7 @@
     }
   }
 
-  .btn-success {
+  .btnSuccess { // 클래스 이름 변경
     width: 100%;
     padding: 10px 15px;
     background-color: #007bff; // 파란색

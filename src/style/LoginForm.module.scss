@@ -1,10 +1,20 @@
 .LoginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; // 전체 높이
+  padding: 20px;
+  background-color: #f5f5f5; // 배경색 추가
+
   .formControl {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
+    width: 100%; // 너비 100%
+    max-width: 400px; // 최대 너비
 
-    & input {
+    input {
       height: 40px;
       padding: 10px;
       margin-bottom: 10px;
@@ -22,20 +32,21 @@
         box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
       }
     }
+  }
 
-    &.btnSuccess {
-      background-color: #28a745;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s;
+  .btnSuccess {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 10px; // 추가된 마진
 
-      &:hover {
-        background-color: #218838;
-      }
+    &:hover {
+      background-color: #218838;
     }
   }
 }
