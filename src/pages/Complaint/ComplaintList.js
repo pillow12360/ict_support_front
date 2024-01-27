@@ -39,7 +39,6 @@ const ComplaintList = () => {
       {complaints.map((complaint) => (
         <div key={complaint.id} className="complaint">
           <p>민원 제목: {complaint.title}</p>
-          <p>건물: {complaint.building}</p>
           {/* 추가 민원 정보 */}
         </div>
       ))}

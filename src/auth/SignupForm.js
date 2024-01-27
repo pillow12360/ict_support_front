@@ -29,7 +29,12 @@ const SignupForm = () => {
 
     if (userData.password !== testPass) {
       console.error('비밀번호가 일치하지 않습니다.');
-      openModal(<p>비밀번호가 일치하지 않습니다. 다시 확인해주세요</p>);
+      openModal(
+        <>
+          <h3>회원가입 오류</h3>
+          <p>비밀번호가 일치하지 않습니다. 다시 확인해주세요</p>
+        </>,
+      );
       return;
     }
 

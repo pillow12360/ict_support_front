@@ -50,7 +50,7 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit} className={styles.LoginForm}>
       <div className={styles.loginHeader}>
-        ICT 지원실 민원처리 <br />
+        ICT 지원실 민원 처리 <br />
         로그인
       </div>
       <div className={styles.formControl}>
