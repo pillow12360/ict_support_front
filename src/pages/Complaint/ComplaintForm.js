@@ -19,8 +19,8 @@ function ComplaintForm(props) {
     if (!complaint.content) newErrors.content = '내용을 입력해주세요.';
     if (!complaint.building) newErrors.building = '건물을 선택해주세요.';
     if (!complaint.category) newErrors.category = '카테고리를 선택해주세요.';
-    if (!complaint.room_number)
-      newErrors.room_number = '강의실의 호실을 입력해주세요.';
+    if (!complaint.roomNumber)
+      newErrors.roomNumber = '강의실의 호실을 입력해주세요.';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -32,7 +32,7 @@ function ComplaintForm(props) {
     content: '',
     building: '',
     category: '',
-    room_number: '',
+    roomNumber: '',
   });
 
   async function handleSubmit(event) {
@@ -183,18 +183,20 @@ function ComplaintForm(props) {
       </div>
 
       <div className={styles.mb3}>
-        <label htmlFor="room_number" className={styles.label}>
+        <label htmlFor="roomNumber" className={styles.label}>
           강의실 호실 (예: 101호)
         </label>
         <input
           type="number"
           className={styles.input}
-          id="room_number"
-          value={complaint.room_number}
+          id="roomNumber"
+          value={complaint.roomNumber}
           onChange={handleChange}
           placeholder="예: 101"
         />
-        {errors.room && <div className={styles.error}>{errors.room}</div>}
+        {errors.roomNumber && (
+          <div className={styles.error}>{errors.roomNumber}</div>
+        )}
       </div>
 
       <button type="submit" className={styles.button}>
