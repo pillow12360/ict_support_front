@@ -1,5 +1,3 @@
-// ComplaintList.scss
-
 .complaint-list-container {
   display: flex;
   flex-direction: column;
@@ -19,6 +17,12 @@
     margin-bottom: 10px;
     width: 80%; // 전체 너비의 80%
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; // 부드러운 전환 효과
+
+    &:hover {
+      transform: translateY(-5px); // 마우스를 가져가면 약간 위로 올라갑니다.
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // 그림자가 더 커지고 어두워집니다.
+    }
 
     p {
       margin: 5px 0;
