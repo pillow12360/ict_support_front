@@ -1,14 +1,19 @@
 .LoginForm {
-  padding: 2rem;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  margin: 0 auto; // 상하 마진을 0으로 하여 중앙에 위치
-  margin-top: 10vh; // 뷰포트 높이의 10%만큼 상단 마진 추가
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  position: fixed; // 화면에 고정
+  top: 50%; // 상단에서 50% 위치
+  left: 50%; // 왼쪽에서 50% 위치
+  transform: translate(-50%, -50%); // 정확한 중앙 정렬을 위해 변환
+  width: 80%; // 컨테이너 너비
+  max-height: 80vh; // 전체 화면 높이의 80%
+  overflow-y: auto; // 세로 스크롤
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.95); // 반투명 배경
+  backdrop-filter: blur(10px); // 배경 블러 효과
+  border-radius: 10px; // 모서리 둥글게
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // 그림자 효과
 
   .loginHeader {
     font-size: 24px;
