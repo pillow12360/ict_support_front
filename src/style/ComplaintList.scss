@@ -1,27 +1,32 @@
 .complaint-list-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-height: 100vh; // 전체 화면 높이
+  position: fixed; // 화면에 고정
+  top: 50%; // 상단에서 50% 위치
+  left: 50%; // 왼쪽에서 50% 위치
+  transform: translate(-50%, -50%); // 정확한 중앙 정렬을 위해 변환
+  width: 80%; // 컨테이너 너비
+  max-height: 80vh; // 전체 화면 높이의 80%
   overflow-y: auto; // 세로 스크롤
   padding: 20px;
+  background-color: rgba(255, 255, 255, 0.95); // 반투명 배경
+  backdrop-filter: blur(10px); // 배경 블러 효과
+  border-radius: 10px; // 모서리 둥글게
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // 그림자 효과
 
   h1 {
     margin-bottom: 20px;
+    text-align: center;
   }
 
   .complaint {
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
-    width: 80%; // 전체 너비의 80%
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; // 부드러운 전환 효과
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
     &:hover {
-      transform: translateY(-5px); // 마우스를 가져가면 약간 위로 올라갑니다.
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // 그림자가 더 커지고 어두워집니다.
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     p {
