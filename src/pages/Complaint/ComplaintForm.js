@@ -9,6 +9,7 @@ function ComplaintForm(props) {
   const { currentUser } = useContext(AuthContext);
   const { openModal, closeModal } = useModal();
   const navigate = useNavigate();
+  const uri = 'http://localhost/api/complaints/';
 
   const [errors, setErrors] = useState({}); // 유효성 검사 (사용자 입력값에 빈 항목 체크)
   const validateForm = () => {
@@ -51,12 +52,14 @@ function ComplaintForm(props) {
       const pushData = {
         ...complaint,
         // userId: currentUser.uid,
-        userName: currentUser.displayName,
+        // userName: currentUser.displayName,
         // timestamp: new Date(),
       };
 
+      console.log(`pushData : ${pushData}`);
+
       axios
-        .post('uri', pushData, {
+        .post(uri, pushData, {
           'Content-Type': 'application/json',
           withCredentials: true,
         })
