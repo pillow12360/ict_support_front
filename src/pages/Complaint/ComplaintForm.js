@@ -50,9 +50,9 @@ function ComplaintForm(props) {
     try {
       const pushData = {
         ...complaint,
-        userId: currentUser.uid,
+        // userId: currentUser.uid,
         userName: currentUser.displayName,
-        timestamp: new Date(),
+        // timestamp: new Date(),
       };
 
       axios
@@ -62,9 +62,19 @@ function ComplaintForm(props) {
         })
         .then((res) => {
           console.log(res);
+          openModal(
+            <>
+              <h1>민원 접수 성공</h1>
+            </>,
+          );
         })
         .catch((error) => {
           console.error(error);
+          openModal(
+            <>
+              <h1>민원 접수 실패</h1>
+            </>,
+          );
         });
     } catch {
       console.log('에러발생');
