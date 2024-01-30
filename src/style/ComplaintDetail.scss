@@ -1,50 +1,37 @@
+// ComplaintDetail.scss
+
 .complaint-detail-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: fixed; // 화면 중앙에 고정
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); // 정확히 중앙에 위치
-  background-color: #fff; // 배경색
-  padding: 20px;
+  background: #ffffff; // 밝은 배경
+  color: #333; // 어두운 글자 색
   border-radius: 8px; // 모서리 둥글게
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // 그림자 효과
-  z-index: 1000; // 다른 요소들 위에 위치
-  max-width: 90%; // 화면 너비의 최대 90%
-  max-height: 80vh; // 화면 높이의 최대 80%
-  overflow-y: auto; // 내용이 넘칠 경우 스크롤
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); // 미묘한 그림자
+  padding: 20px; // 여백
+  max-width: 500px; // 최대 너비
+  margin: auto; // 중앙 정렬
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; // 모던 폰트
 
   h1 {
-    color: #333; // 제목 색상
-    margin-bottom: 10px;
+    font-size: 1.5em; // 크기 조절
+    text-align: center; // 중앙 정렬
+    margin-bottom: 20px; // 제목 아래 여백
+    border-bottom: 1px solid #eee; // 구분선
+    padding-bottom: 10px; // 구분선과 텍스트 사이 여백
   }
 
-  p {
-    color: #666; // 본문 색상
-    line-height: 1.5;
-    margin-bottom: 5px;
-  }
   .detail-row {
     display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+    justify-content: space-between; // 제목과 내용 사이 간격
+    margin-bottom: 15px; // 행 사이 여백
 
     .detail-title {
-      font-weight: bold;
-      margin-right: 10px;
+      font-weight: bold; // 제목 굵기
+      margin-right: 10px; // 제목과 내용 사이 간격
+      color: #007bff; // 제목 색상
     }
 
     .detail-content {
-      flex: 1;
-      padding-left: 10px;
+      flex: 1; // 내용이 차지할 수 있는 모든 공간 차지
+      text-align: right; // 내용을 오른쪽 정렬
     }
   }
-
-  @media (max-width: 768px) {
-    max-width: 100%;
-    padding: 10px;
-  }
-
 }

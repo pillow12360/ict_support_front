@@ -21,21 +21,14 @@ const ComplaintList = () => {
   const { openModal, closeModal } = useModal();
 
   const [complaints, setComplaints] = useState([]);
-  const [detailComplaint, setDetailComplaints] = useState({});
 
   const handleClick = async (id) => {
     try {
       const docRef = doc(db, 'complaints', id); // 'complaints' 문자열 사용
       const docSnap = await getDoc(docRef); // getDoc 함수 사용
       if (docSnap.exists()) {
-        console.log('Document data:', docSnap.data());
-        const detailData = docSnap.data(); // 상세 데이터 추출
-        setDetailComplaints(detailData); // 상태 업데이트
-        openModal(
-          <>
-            <ComplaintDetail prop={detailComplaint}></ComplaintDetail>
-          </>,
-        );
+        const detailData = docSnap.data();
+        openModal(<ComplaintDetail detailData={detailData} />);
       } else {
         console.log('해당 문서가 없습니다');
       }
