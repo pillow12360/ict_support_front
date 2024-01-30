@@ -59,10 +59,7 @@ function ComplaintForm(props) {
       console.log(`pushData : ${pushData}`);
 
       axios
-        .post(uri, pushData, {
-          'Content-Type': 'application/json',
-          withCredentials: true,
-        })
+        .post(uri, pushData)
         .then((res) => {
           console.log(res);
           openModal(
