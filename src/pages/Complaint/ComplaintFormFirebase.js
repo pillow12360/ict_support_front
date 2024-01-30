@@ -55,12 +55,15 @@ function ComplaintFormFirebase(props) {
         timestamp: new Date(),
       }).then(
         openModal(
-          <p>
-            민원 접수 완료 <br /> 민원을 제출하여 주셔서 감사합니다. 빠른 시일
-            내에 처리하도록 하겠습니다.
+          <>
+            <h1>민원 접수 완료</h1> <br />
+            <p>
+              민원을 제출하여 주셔서 감사합니다. 빠른 시일 내에 처리하도록
+              하겠습니다.
+            </p>
             <br />
-            3초 후 자동으로 홈으로 돌아갑니다.
-          </p>,
+            <p>3초 후 자동으로 홈으로 돌아갑니다.</p>
+          </>,
         ),
         setTimeout(() => {
           closeModal();

@@ -3,7 +3,7 @@ import '../../style/ComplaintDetail.scss'; // SCSS 파일 임포트
 
 const ComplaintDetail = ({ detailData }) => {
   if (!detailData) {
-    return <div>Loading...</div>; // 또는 적절한 로딩 컴포넌트를 표시
+    return <div>상세 정보 페이지 불러오는 중...</div>; // 또는 적절한 로딩 컴포넌트를 표시
   }
 
   return (
