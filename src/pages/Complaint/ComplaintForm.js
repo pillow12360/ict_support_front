@@ -9,7 +9,7 @@ function ComplaintForm(props) {
   const { currentUser } = useContext(AuthContext);
   const { openModal, closeModal } = useModal();
   const navigate = useNavigate();
-  const uri = 'http://localhost:8080/api/complaints/create-complaint/';
+  const uri = 'http://localhost:8080/api/complaints/create-complaint';
 
   const [errors, setErrors] = useState({}); // 유효성 검사 (사용자 입력값에 빈 항목 체크)
   const validateForm = () => {
@@ -19,7 +19,8 @@ function ComplaintForm(props) {
     if (!complaint.content) newErrors.content = '내용을 입력해주세요.';
     if (!complaint.building) newErrors.building = '건물을 선택해주세요.';
     if (!complaint.category) newErrors.category = '카테고리를 선택해주세요.';
-    if (!complaint.room) newErrors.room = '강의실의 호실을 입력해주세요.';
+    if (!complaint.room_number)
+      newErrors.room_number = '강의실의 호실을 입력해주세요.';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -31,7 +32,7 @@ function ComplaintForm(props) {
     content: '',
     building: '',
     category: '',
-    room: '',
+    room_number: '',
   });
 
   async function handleSubmit(event) {
@@ -182,14 +183,14 @@ function ComplaintForm(props) {
       </div>
 
       <div className={styles.mb3}>
-        <label htmlFor="room" className={styles.label}>
+        <label htmlFor="room_number" className={styles.label}>
           강의실 호실 (예: 101호)
         </label>
         <input
           type="number"
           className={styles.input}
-          id="room"
-          value={complaint.room}
+          id="room_number"
+          value={complaint.room_number}
           onChange={handleChange}
           placeholder="예: 101"
         />
