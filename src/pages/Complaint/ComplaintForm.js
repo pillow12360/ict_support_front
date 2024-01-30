@@ -9,7 +9,7 @@ function ComplaintForm(props) {
   const { currentUser } = useContext(AuthContext);
   const { openModal, closeModal } = useModal();
   const navigate = useNavigate();
-  const uri = 'http://localhost/api/complaints/';
+  const uri = 'http://localhost:8080/create-complaint/';
 
   const [errors, setErrors] = useState({}); // 유효성 검사 (사용자 입력값에 빈 항목 체크)
   const validateForm = () => {
@@ -27,7 +27,7 @@ function ComplaintForm(props) {
 
   const [complaint, setComplaint] = useState({
     title: '',
-    major: '',
+    // major: '',
     content: '',
     building: '',
     category: '',
@@ -108,7 +108,7 @@ function ComplaintForm(props) {
         {errors.title && <div className={styles.error}>{errors.title}</div>}
       </div>
 
-      <div className={styles.mb3}>
+      {/* <div className={styles.mb3}>
         <label htmlFor="major" className={styles.label}>
           학과
         </label>
@@ -120,7 +120,7 @@ function ComplaintForm(props) {
           onChange={handleChange}
         />
         {errors.title && <div className={styles.error}>{errors.major}</div>}
-      </div>
+      </div> */}
 
       <div className={styles.mb3}>
         <label htmlFor="category" className={styles.label}>
