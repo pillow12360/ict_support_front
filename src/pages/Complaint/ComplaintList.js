@@ -1,21 +1,47 @@
 import React, { useContext, useEffect, useState } from 'react';
 import db from '../../firebase';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  doc,
+  getDoc,
+} from 'firebase/firestore';
 import { AuthContext } from '../../AuthContext';
 import '../../style/ComplaintList.scss';
+import { useModal } from '../../ModalContext';
+import ComplaintDetail from './ComplaintDetail';
 
 // 유저 id 값으로 접수한 민원 조회 컴포넌트
 
 const ComplaintList = () => {
   const { currentUser } = useContext(AuthContext); // 현재 유저 정보
   const currentUserId = currentUser.uid;
+  const { openModal, closeModal } = useModal();
 
   const [complaints, setComplaints] = useState([]);
   const [detailComplaint, setDetailComplaints] = useState({});
 
-  const handleClick = (id) => {
+  const handleClick = async (id) => {
     try {
-    } catch {}
+      const docRef = doc(db, 'complaints', id); // 'complaints' 문자열 사용
+      const docSnap = await getDoc(docRef); // getDoc 함수 사용
+      if (docSnap.exists()) {
+        console.log('Document data:', docSnap.data());
+        const detailData = docSnap.data(); // 상세 데이터 추출
+        setDetailComplaints(detailData); // 상태 업데이트
+        openModal(
+          <>
+            <ComplaintDetail prop={detailComplaint}></ComplaintDetail>
+          </>,
+        );
+      } else {
+        console.log('해당 문서가 없습니다');
+      }
+    } catch (error) {
+      console.error('문서를 불러오는 중 에러가 발생하였습니다.', error);
+    }
   };
 
   useEffect(() => {
