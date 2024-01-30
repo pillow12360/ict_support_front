@@ -13,13 +13,22 @@ nav {
   align-items: center;
   padding: 0 20px;
   border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // 그림자 추가
+  transition: background-color 0.3s ease; // 배경색 전환 애니메이션
   
   a {
-    color: black;
+    color: $text-color;
     text-decoration: none;
     padding: 10px 15px;
     display: block;
+    transition: color 0.3s ease, transform 0.3s ease; // 색상과 변환 애니메이션
+
+    &:hover {
+      background-color: $hover-color;
+      transform: translateY(-2px); // 호버 시 약간 위로 이동
+    }
   }
+  
   ul {
     list-style: none;
     display: flex;
@@ -30,13 +39,9 @@ nav {
       margin: 0 10px;
       
       a {
-        color: $text-color;
-        text-decoration: none;
-        padding: 10px 15px;
-        display: block;
-
         &:hover {
-          background-color: $hover-color;
+          color: darken($text-color, 10%); // 호버 시 텍스트 색상 변경
+          background-color: lighten($hover-color, 5%); // 호버 시 배경색 밝게
         }
       }
     }

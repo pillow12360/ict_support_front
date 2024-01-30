@@ -14,12 +14,54 @@ const ComplaintDetail = ({ detailData }) => {
         <span className="detail-content">{detailData.title}</span>
       </div>
       <div className="detail-row">
+        <span className="detail-title">카테고리 : </span>
+        <span className="detail-content">
+          {(() => {
+            switch (detailData.category) {
+              case 'SW':
+                return '소프트웨어';
+              case 'HW':
+                return '하드웨어';
+              case 'facility':
+                return '실습실 시설';
+              case 'etc':
+                return '기타';
+              default:
+                return '알 수 없음';
+            }
+          })()}
+        </span>
+      </div>
+      <div className="detail-row">
         <span className="detail-title">민원 내용 : </span>
         <span className="detail-content">{detailData.content}</span>
       </div>
       <div className="detail-row">
         <span className="detail-title">건물 : </span>
-        <span className="detail-content">{detailData.building}</span>
+        <span className="detail-content">
+          {(() => {
+            switch (detailData.building) {
+              case 'BY':
+                return '배양관';
+              case 'HK':
+                return '호천관';
+              case 'HH':
+                return '흥학관';
+              case 'JD':
+                return '지덕관';
+              case 'LB':
+                return '도서관';
+              case 'NR':
+                return '누리관';
+              case 'SE':
+                return '서일관';
+              case 'SJ':
+                return '세종관';
+              default:
+                return '알 수 없음'; // 건물 코드가 일치하지 않는 경우
+            }
+          })()}
+        </span>
       </div>
       <div className="detail-row">
         <span className="detail-title">실습실 호실 : </span>

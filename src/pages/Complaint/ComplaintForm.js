@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-
 import { AuthContext } from '../../AuthContext';
 import styles from '../../style/ComplaintForm.module.scss';
 import { useModal } from '../../ModalContext';
