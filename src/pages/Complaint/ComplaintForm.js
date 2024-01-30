@@ -15,7 +15,7 @@ function ComplaintForm(props) {
   const validateForm = () => {
     let newErrors = {};
     if (!complaint.title) newErrors.title = '제목을 입력해주세요.';
-    if (!complaint.major) newErrors.major = '학과를 입력해주세요.';
+    // if (!complaint.major) newErrors.major = '학과를 입력해주세요.';
     if (!complaint.content) newErrors.content = '내용을 입력해주세요.';
     if (!complaint.building) newErrors.building = '건물을 선택해주세요.';
     if (!complaint.category) newErrors.category = '카테고리를 선택해주세요.';
