@@ -1,37 +1,74 @@
 .footer {
-  background-color: #f5f5f5;
+  background-color: #2c3e50; // 진한 배경색으로 변경
+  color: #ecf0f1; // 내용 색상을 밝게 변경
   text-align: center;
   padding: 20px 0;
-  position: fixed; /* 하단에 고정 */
-  bottom: 0; /* 화면의 가장 아래 */
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  z-index: 10; /* 다른 내용 위에 오도록 z-index 설정 */
+  // z-index: 10;
+  // transform: translateY(100%);
+  transition: transform 0.3s;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.3); // 상단에 그림자 추가
+
+  &.is-visible {
+    transform: translateY(0);
+  }
 
   .footer-content {
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 80%;
+    margin: auto ;
     padding: 10px;
-    
+    display: flex;
+
+    justify-content: space-between; // 내용을 양쪽으로 정렬
+    align-items: center;
+
     p {
       margin-bottom: 20px;
+      font-size: 0.9em; // 폰트 크기 조정
+      font-weight: 300; // 폰트 굵기 조정
     }
 
     .footer-links {
       list-style: none;
       padding: 0;
-      margin: 20px 0;
+      display: flex; // 링크를 가로로 나열
 
       li {
-        display: inline;
-        margin: 0 10px;
+        margin: 0 15px; // 링크 간격 조정
+
+        a {
+          color: #ecf0f1; // 링크 색상 변경
+          text-decoration: none;
+          font-size: 0.9em; // 폰트 크기 조정
+
+          &:hover {
+            color: #bdc3c7; // 호버 색상 변경
+            text-decoration: underline; // 호버 시 밑줄 표시
+          }
+        }
       }
+    }
+  }
 
-      a {
-        color: #333;
-        text-decoration: none;
+  // 모바일 화면에서의 스타일
+  @media (max-width: 768px) {
+    padding: 15px 0;
 
-        &:hover {
-          text-decoration: underline;
+    .footer-content {
+      flex-direction: column; // 모바일에서는 세로로 정렬
+      align-items: center;
+
+      p {
+        margin-bottom: 10px;
+      }
+      
+      .footer-links {
+        margin: 10px 0;
+
+        li {
+          margin: 0 5px; // 모바일에서는 링크 간격을 줄임
         }
       }
     }
