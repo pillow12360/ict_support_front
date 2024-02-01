@@ -6,11 +6,10 @@ import GoogleLogin from '../auth/GoogleLogin';
 const Nav = () => {
   return (
     <nav>
-      <Link to="/">서일대학교 ICT 지원실</Link>
+      <div className="title">
+        <Link to="/">서일대학교 ICT 지원실</Link>
+      </div>
       <ul>
-        {/* <li>
-          <Link to="/authscreen">로그인/회원가입</Link>
-        </li> */}
         <li>
           <Link to="/complaintform">민원 접수 1</Link>
         </li>
