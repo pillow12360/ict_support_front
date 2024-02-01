@@ -12,7 +12,10 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  border-radius: 10px;
+  border-top-left-radius : 10px;
+  border-top-right-radius : 3px;
+  border-bottom-right-radius : 50px;
+  border-bottom-left-radius : 70px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
 

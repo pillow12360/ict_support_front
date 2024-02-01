@@ -8,7 +8,7 @@
   top: 40%; // 상단에서 50% 위치
   left: 50%; // 왼쪽에서 50% 위치
   transform: translate(-50%, -50%); // 정확한 중앙 정렬을 위해 변환
-  width: 80%; // 컨테이너 너비
+  width: 83%; // 컨테이너 너비
   max-height: calc(100vh - 200px); // 헤더와 푸터 공간을 제외한 높이
   overflow-y: auto; // 세로 스크롤
   padding: 20px;

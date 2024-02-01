@@ -3,6 +3,10 @@
 .container {
   @extend %container-style;
 }
+.title {
+  text-align: center;
+  font-size: xx-large;
+}
 
 .label {
   display: block;

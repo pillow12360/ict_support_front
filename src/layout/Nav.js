@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../style/Nav.scss';
 import GoogleLogin from '../auth/GoogleLogin';
@@ -19,6 +19,7 @@ const Nav = () => {
         <li>
           <Link to="/complaintlist">접수된 민원 조회</Link>
         </li>
+        {}
         <li>
           <Link to="/login">로그인</Link>
         </li>

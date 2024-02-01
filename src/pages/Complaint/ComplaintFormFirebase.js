@@ -88,6 +88,7 @@ function ComplaintFormFirebase(props) {
   return (
     <form onSubmit={handleSubmit} className={styles.container}>
       <div className={styles.mb3}>
+        <div className={styles.title}>민원 접수 페이지</div>
         <label htmlFor="title" className={styles.label}>
           민원 제목
         </label>
