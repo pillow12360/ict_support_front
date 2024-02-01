@@ -1,4 +1,8 @@
+@import 'common';
+
 .complaint-list-container {
+  @extend %container-style ;
+  
   position: fixed; // 화면에 고정
   top: 45%; // 상단에서 50% 위치
   left: 50%; // 왼쪽에서 50% 위치
