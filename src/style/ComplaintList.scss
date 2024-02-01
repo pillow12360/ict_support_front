@@ -1,13 +1,13 @@
 @import 'common';
 
 .complaint-list-container {
-  @extend %container-style ;
+  // @extend %container-style ;
   
   position: fixed; // 화면에 고정
   top: 45%; // 상단에서 50% 위치
   left: 50%; // 왼쪽에서 50% 위치
   transform: translate(-50%, -50%); // 정확한 중앙 정렬을 위해 변환
-  width: 55%; // 컨테이너 너비
+  width: 80vi; // 컨테이너 너비
   max-height: 70vh; // 전체 화면 높이의 80%
   overflow-y: auto; // 세로 스크롤
   padding: 20px;

@@ -18,7 +18,7 @@ import ComplaintDetail from './ComplaintDetail';
 const ComplaintList = () => {
   const { currentUser } = useContext(AuthContext); // 현재 유저 정보
   const currentUserId = currentUser.uid;
-  const { openModal, closeModal } = useModal();
+  const { openModal } = useModal();
 
   const [complaints, setComplaints] = useState([]);
 
