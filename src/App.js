@@ -8,6 +8,7 @@ import ComplaintForm from './pages/Complaint/ComplaintForm';
 import Nav from './layout/Nav';
 import Footer from './layout/Footer';
 import './App.css';
+import './index.css';
 import { AuthProvider } from './AuthContext';
 import ComplaintFormFirebase from './pages/Complaint/ComplaintFormFirebase';
 import { ModalProvider } from './ModalContext';

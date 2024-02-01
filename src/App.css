@@ -1,4 +1,7 @@
 /* App.css 또는 다른 CSS 파일에 추가 */
+body {
+  font-family: 'Jua', sans-serif;
+}
 .background {
   background-image: url('/public/background.png'); /* 이미지 경로 조정 필요 */
   background-size: cover; /* 배경화면 전체를 커버 */
