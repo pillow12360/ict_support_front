@@ -19,8 +19,8 @@ import SignupForm from './auth/SignupForm';
 const App = () => {
   return (
     <Router>
-      <AuthProvider>
-        <ModalProvider>
+      <ModalProvider>
+        <AuthProvider>
           <div className="background">
             <Nav />
             <div className="content-wrap">
@@ -42,8 +42,8 @@ const App = () => {
             </div>
             <Footer />
           </div>
-        </ModalProvider>
-      </AuthProvider>
+        </AuthProvider>
+      </ModalProvider>
     </Router>
   );
 };

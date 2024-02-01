@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../AuthContext';
-
 const GoogleLogin = () => {
   const { currentUser, loginWithGoogle, logout } = useContext(AuthContext);
 
