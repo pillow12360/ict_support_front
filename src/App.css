@@ -9,4 +9,17 @@ body {
   background-repeat: no-repeat; /* 반복 없음 */
   height: 100vh; /* 전체 화면 높이 */
   width: 100vw; /* 전체 화면 너비 */
+  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.routes-container {
+  flex: 1; /* 유연하게 콘텐츠 영역을 확장 */
+  overflow: auto; /* 필요한 경우 스크롤을 허용 */
+}
+
+/* Nav 컴포넌트와 Footer 컴포넌트 사이의 내용에 대한 스타일을 적용합니다. */
+.content-wrap {
+  padding: 20px;
 }

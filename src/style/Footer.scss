@@ -1,56 +1,45 @@
-.footer {
+.footer-container {
+  width: 100%;
+  padding: 10px; // 패딩을 줄여서 푸터의 높이 줄이기
   background-color: #f4f4f4;
-  color: #333;
-  // font-family: 'Open Sans', sans-serif;
-  padding: 20px 0;
-  position: fixed;
-  bottom: 0;
-  width: 100vw; // 뷰포트의 전체 너비를 사용
-  box-sizing: border-box; // 패딩을 너비에 포함
-  transition: transform 0.3s ease-in-out;
-  z-index: 1000;
-  overflow-x: hidden; // 수평 스크롤을 숨김
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: auto;
+}
 
-  &.is-visible {
-    transform: translateY(0); // 보이는 상태
-  }
-
-  &.not-visible {
-    transform: translateY(100%); // 숨겨진 상태
-  }
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   .footer-content {
-    display: flex; // 플렉스 박스 사용
-    justify-content: space-between; // 요소들을 양 끝으로 정렬
-    align-items: center; // 세로 중앙 정렬
-    margin: 0 auto; // 중앙 정렬
-    max-width: 1140px; // 최대 너비 설정
-    padding: 0 15px; // 좌우 패딩
+    display: inline;
+    width: 100%;
+    height: 100%;
+    text-align: center;
 
     p {
-      margin: 0; // 마진 제거
+      text-align: center;
+      margin: 5px 0; // p 요소의 마진 줄이기
     }
 
     .footer-links {
-      list-style: none; // 리스트 스타일 제거
-      padding: 0; // 패딩 제거
-      margin: 0; // 마진 제거
-      display: flex; // 플렉스 박스 사용
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       li {
-        margin-left: 20px; // 왼쪽 마진으로 간격 조정
-
-        &:first-child {
-          margin-left: 0; // 첫 번째 항목은 마진 제거
-        }
+        margin: 2px 0; // li 요소의 마진 줄이기
 
         a {
-          text-decoration: none; // 링크 밑줄 제거
-          color: #333; // 링크 색상 설정
-          transition: color 0.3s ease-in-out; // 색상 변경 애니메이션 효과
+          text-decoration: none;
+          color: #333;
+          transition: color 0.3s;
 
           &:hover {
-            color: #1e90ff; // 호버 상태일 때 색상 변경
+            color: #1e90ff;
           }
         }
       }
@@ -58,3 +47,22 @@
   }
 }
 
+@media (min-width: 768px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+
+    .footer-content {
+      text-align: left;
+    }
+
+    .footer-links {
+      flex-direction: row;
+      align-items: center;
+
+      li {
+        margin: 0 5px; // li 요소의 마진 줄이기
+      }
+    }
+  }
+}

@@ -23,21 +23,23 @@ const App = () => {
         <ModalProvider>
           <div className="background">
             <Nav />
-            <Routes>
-              <Route path="/" element={<First />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/authscreen" element={<AuthScreen />} />
-              <Route path="/login" element={<LoginForm />} />
-              <Route path="/signup" element={<SignupForm />} />
-              <Route path="/complaintform" element={<ComplaintForm />} />
-              <Route path="/complaintlist" element={<ComplaintList />} />
-              <Route
-                path="/complaintformfirebase"
-                element={<ComplaintFormFirebase />}
-              />
-              <Route path="*" element={<NotFound />}></Route>
-              {/* 추가 라우트 */}
-            </Routes>
+            <div className="content-wrap">
+              <Routes>
+                <Route path="/" element={<First />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/authscreen" element={<AuthScreen />} />
+                <Route path="/login" element={<LoginForm />} />
+                <Route path="/signup" element={<SignupForm />} />
+                <Route path="/complaintform" element={<ComplaintForm />} />
+                <Route path="/complaintlist" element={<ComplaintList />} />
+                <Route
+                  path="/complaintformfirebase"
+                  element={<ComplaintFormFirebase />}
+                />
+                <Route path="*" element={<NotFound />}></Route>
+                {/* 추가 라우트 */}
+              </Routes>
+            </div>
             <Footer />
           </div>
         </ModalProvider>
