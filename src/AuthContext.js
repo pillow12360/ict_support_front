@@ -28,6 +28,12 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const fetchUserRole = async (user) => {
+    // user 객체와 user.uid 값의 존재 여부를 확인
+    if (!user || !user.uid) {
+      console.error('Invalid user object or UID.');
+      return; // user 객체 또는 user.uid 값이 없으면 함수 실행 중지
+    }
+
     const userRef = doc(firestore, 'users', user.uid);
     const docSnap = await getDoc(userRef);
 
