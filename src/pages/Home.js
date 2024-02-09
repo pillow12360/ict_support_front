@@ -4,7 +4,7 @@ import styles from '../style/Home.module.scss'; // SCSS 모듈 임포트
 import { AuthContext } from '../AuthContext';
 
 const Home = () => {
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, userRole } = useContext(AuthContext);
 
   return (
     <div className={styles.container}>
@@ -13,7 +13,9 @@ const Home = () => {
         이곳에서는 다양한 ICT 관련 민원을 접수하고 처리합니다. <br />
         문제 해결을 위한 자주 묻는 질문, 사용자 가이드 등을 찾아볼 수 있습니다.
       </p>
-
+      {userRole === 'admin' ? (
+        <h1>관리자 {currentUser.displayName}님 안녕하세요</h1>
+      ) : null}
       <div className={styles.user}>
         <h2>환영합니다 {currentUser.displayName}님!</h2>
         <p>무엇을 도와드릴까요? 원하는 기능을 선택하여주세요</p>
