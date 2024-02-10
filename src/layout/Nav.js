@@ -2,14 +2,24 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../style/Nav.scss';
 import GoogleLogin from '../auth/GoogleLogin';
+import { AuthContext } from '../AuthContext';
 
 const Nav = () => {
+  const { userRole } = useContext(AuthContext);
+
   return (
     <nav>
       <div className="title">
         <Link to="/">서일대학교 ICT 지원실</Link>
       </div>
       <ul>
+        <li>
+          {userRole === 'admin' ? (
+            <>
+              <Link to="/admin">관리자 페이지</Link>
+            </>
+          ) : null}
+        </li>
         <li>
           <Link to="/complaintform">민원 접수 1</Link>
         </li>

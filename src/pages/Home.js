@@ -14,7 +14,12 @@ const Home = () => {
         문제 해결을 위한 자주 묻는 질문, 사용자 가이드 등을 찾아볼 수 있습니다.
       </p>
       {userRole === 'admin' ? (
-        <h1>관리자 {currentUser.displayName}님 안녕하세요</h1>
+        <>
+          <h1>관리자 {currentUser.displayName}님 안녕하세요</h1>
+          <Link to="/admin" className={styles.btn}>
+            관리자 페이지
+          </Link>
+        </>
       ) : null}
       <div className={styles.user}>
         <h2>환영합니다 {currentUser.displayName}님!</h2>

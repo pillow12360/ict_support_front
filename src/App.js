@@ -15,6 +15,7 @@ import { ModalProvider } from './ModalContext';
 import ComplaintList from './pages/Complaint/ComplaintList';
 import LoginForm from './auth/LoginForm';
 import SignupForm from './auth/SignupForm';
+import ComplaintManage from './pages/admin/ComplaintManage';
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
                   element={<ComplaintFormFirebase />}
                 />
                 <Route path="*" element={<NotFound />}></Route>
+                <Route path="/admin" element={<ComplaintManage />} />
                 {/* 추가 라우트 */}
               </Routes>
             </div>
