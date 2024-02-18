@@ -17,8 +17,8 @@ import ComplaintDetail from './ComplaintDetail';
 
 // 유저 id 값으로 접수한 민원 조회 컴포넌트
 
-const ComplaintList = ({ userRole }) => {
-  const { currentUser } = useContext(AuthContext); // 현재 유저 정보
+const ComplaintList = () => {
+  const { currentUser, userRole } = useContext(AuthContext); // 현재 유저 정보
   const currentUserId = currentUser.uid;
   const { openModal } = useModal();
 
@@ -30,21 +30,15 @@ const ComplaintList = ({ userRole }) => {
       const docSnap = await getDoc(docRef); // getDoc 함수 사용
       if (docSnap.exists()) {
         const detailData = docSnap.data();
-        openModal(<ComplaintDetail detailData={detailData} />);
+        openModal(
+          <ComplaintDetail detailData={detailData} userRole={userRole} />,
+        );
       } else {
         console.log('해당 문서가 없습니다');
       }
     } catch (error) {
       console.error('문서를 불러오는 중 에러가 발생하였습니다.', error);
     }
-  };
-
-  const handleDelete = async (id) => {
-    // 민원 삭제 처리 구현
-  };
-
-  const handleUpdate = async (id) => {
-    // 민원 수정 처리 구현
   };
 
   useEffect(() => {
@@ -82,7 +76,11 @@ const ComplaintList = ({ userRole }) => {
 
   return (
     <div className="complaint-list-container">
-      <h1>접수한 민원 조회</h1>
+      {userRole === 'admin' ? (
+        <h1>접수된 민원 조회 및 관리 페이지</h1>
+      ) : (
+        <h1>내가 접수한 민원 목록</h1>
+      )}
       {complaints.map((complaint) => (
         <div
           key={complaint.id}
@@ -91,16 +89,9 @@ const ComplaintList = ({ userRole }) => {
             handleClick(complaint.id);
           }}
         >
+          <p>접수자 : {complaint.userName}</p>
           <p>민원 제목: {complaint.title}</p>
           <p>접수 일자 : {complaint.timestamp}</p>
-          {userRole === 'admin' && (
-            <div className="admin-actions">
-              {/* 드롭다운 메뉴 또는 관리자 작업 버튼 구현 */}
-              <button onClick={() => handleDelete(complaint.id)}>삭제</button>
-              <button onClick={() => handleUpdate(complaint.id)}>수정</button>
-              {/* 추가 관리자 작업 버튼 */}
-            </div>
-          )}
         </div>
       ))}
     </div>

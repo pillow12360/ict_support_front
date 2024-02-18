@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../style/ComplaintDetail.scss'; // SCSS 파일 임포트
 
-const ComplaintDetail = ({ detailData }) => {
+const ComplaintDetail = ({ detailData, userRole }) => {
   if (!detailData) {
     return <div>상세 정보 페이지 불러오는 중...</div>; // 또는 적절한 로딩 컴포넌트를 표시
   }
@@ -66,6 +66,9 @@ const ComplaintDetail = ({ detailData }) => {
       <div className="detail-row">
         <span className="detail-title">실습실 호실 : </span>
         <span className="detail-content">{detailData.room}</span>
+      </div>
+      <div>
+        {userRole === 'admin' ? <span>관리자 드롭다운 메뉴</span> : null}
       </div>
     </div>
   );
