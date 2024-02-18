@@ -7,6 +7,8 @@ import {
   getDocs,
   doc,
   getDoc,
+  deleteDoc,
+  updateDoc,
 } from 'firebase/firestore';
 import { AuthContext } from '../../AuthContext';
 import '../../style/ComplaintList.scss';
@@ -15,7 +17,7 @@ import ComplaintDetail from './ComplaintDetail';
 
 // 유저 id 값으로 접수한 민원 조회 컴포넌트
 
-const ComplaintList = () => {
+const ComplaintList = ({ userRole }) => {
   const { currentUser } = useContext(AuthContext); // 현재 유저 정보
   const currentUserId = currentUser.uid;
   const { openModal } = useModal();
@@ -37,24 +39,36 @@ const ComplaintList = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    // 민원 삭제 처리 구현
+  };
+
+  const handleUpdate = async (id) => {
+    // 민원 수정 처리 구현
+  };
+
   useEffect(() => {
     const fetchComplaints = async () => {
       try {
-        const q = query(
-          collection(db, 'complaints'),
-          where('userId', '==', currentUserId),
-        );
+        let q;
+        if (userRole === 'admin') {
+          // 관리자인 경우 모든 민원을 가져옴
+          q = query(collection(db, 'complaints'));
+        } else {
+          // 일반 사용자인 경우 해당 사용자의 민원만 가져옴
+          q = query(
+            collection(db, 'complaints'),
+            where('userId', '==', currentUserId),
+          );
+        }
         const querySnapshot = await getDocs(q);
         const complaintsData = querySnapshot.docs.map((doc) => {
-          // Timestamp를 Date 객체로 변환
           const timestamp = doc.data().timestamp;
           const date = timestamp ? timestamp.toDate() : new Date();
-          // 원하는 날짜 형식으로 변환 (예: '2024-01-30')
           const formattedDate = date.toLocaleDateString('ko-KR');
           return {
             id: doc.id,
             ...doc.data(),
-            // 변환된 날짜를 사용
             timestamp: formattedDate,
           };
         });
@@ -64,7 +78,7 @@ const ComplaintList = () => {
       }
     };
     fetchComplaints();
-  }, [currentUserId]);
+  }, [currentUserId, userRole]); // userRole을 의존성 배열에 추가
 
   return (
     <div className="complaint-list-container">
@@ -79,7 +93,14 @@ const ComplaintList = () => {
         >
           <p>민원 제목: {complaint.title}</p>
           <p>접수 일자 : {complaint.timestamp}</p>
-          {/* 추가 민원 정보 */}
+          {userRole === 'admin' && (
+            <div className="admin-actions">
+              {/* 드롭다운 메뉴 또는 관리자 작업 버튼 구현 */}
+              <button onClick={() => handleDelete(complaint.id)}>삭제</button>
+              <button onClick={() => handleUpdate(complaint.id)}>수정</button>
+              {/* 추가 관리자 작업 버튼 */}
+            </div>
+          )}
         </div>
       ))}
     </div>
