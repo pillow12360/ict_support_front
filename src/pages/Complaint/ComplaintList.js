@@ -7,8 +7,6 @@ import {
   getDocs,
   doc,
   getDoc,
-  deleteDoc,
-  updateDoc,
 } from 'firebase/firestore';
 import { AuthContext } from '../../AuthContext';
 import '../../style/ComplaintList.scss';

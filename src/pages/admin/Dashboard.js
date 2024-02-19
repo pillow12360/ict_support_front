@@ -1,20 +1,63 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { collection, getDocs, query } from 'firebase/firestore';
+import db from '../../firebase';
 
-const data = [
-  { name: '대기 중', value: 400 },
-  { name: '처리 중', value: 300 },
-  { name: '완료', value: 300 },
-];
 const COLORS = ['#FFBB28', '#FF8042', '#0088FE'];
 
 function Dashboard() {
+  const [complaintStatus, setComplaintStatus] = useState([]);
+
+  useEffect(() => {
+    const fetchComplaintData = async () => {
+      const complaintQuery = query(collection(db, 'complaints'));
+      const querySnapshot = await getDocs(complaintQuery);
+      const status = {
+        accepting: 0,
+        received: 0,
+        not_accepted: 0,
+        in_progress: 0,
+        completed: 0,
+        unresolvable: 0,
+      };
+
+      querySnapshot.forEach((doc) => {
+        // 여기서는 `status` 필드를 기반으로 민원 상태를 집계합니다.
+        const complaint = doc.data();
+        if (complaint.status) {
+          status[complaint.status] += 1;
+        }
+      });
+
+      // `status` 객체를 배열로 변환하여 차트 데이터로 사용합니다.
+      const chartData = Object.keys(status).map((key) => ({
+        name: key,
+        value: status[key],
+      }));
+
+      setComplaintStatus(chartData);
+      console.log(complaintStatus);
+    };
+
+    fetchComplaintData();
+  }, []);
+
   return (
     <div>
       <div>
         <div>
           <div>
-            <p>총 민원 수</p> {}
+            <h2>민원 처리 상태</h2>
+            <p>
+              총 민원 수 :{' '}
+              {complaintStatus.reduce((acc, curr) => acc + curr.value, 0)}
+            </p>
+            {/* 옵셔널 체이닝을 사용하여 각 상태별 민원 수 안전하게 표시 */}
+            <p>접수 중 : {complaintStatus[0]?.value || 0}</p>
+            <p>접수 불가 : {complaintStatus[1]?.value || 0}</p>
+            <p>처리 중 : {complaintStatus[2]?.value || 0}</p>
+            <p>완료 : {complaintStatus[3]?.value || 0}</p>
+            <p>처리 불가 : {complaintStatus[4]?.value || 0}</p>
           </div>
         </div>
         <div>
@@ -23,7 +66,7 @@ function Dashboard() {
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
-                  data={data}
+                  data={complaintStatus}
                   cx="50%"
                   cy="50%"
                   outerRadius={100}
@@ -31,7 +74,7 @@ function Dashboard() {
                   dataKey="value"
                   label={(entry) => entry.name}
                 >
-                  {data.map((entry, index) => (
+                  {complaintStatus.map((entry, index) => (
                     <Cell
                       key={`cell-${index}`}
                       fill={COLORS[index % COLORS.length]}
