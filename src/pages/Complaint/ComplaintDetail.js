@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../style/ComplaintDetail.scss'; // SCSS 파일 임포트
+import AdminMenu from '../admin/AdminMenu';
 
 const ComplaintDetail = ({ detailData, userRole }) => {
   if (!detailData) {
@@ -67,9 +68,7 @@ const ComplaintDetail = ({ detailData, userRole }) => {
         <span className="detail-title">실습실 호실 : </span>
         <span className="detail-content">{detailData.room}</span>
       </div>
-      <div>
-        {userRole === 'admin' ? <span>관리자 드롭다운 메뉴</span> : null}
-      </div>
+      <div>{userRole === 'admin' ? <AdminMenu /> : null}</div>
     </div>
   );
 };
