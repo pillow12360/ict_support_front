@@ -32,6 +32,7 @@ function ComplaintFormFirebase(props) {
     building: '',
     category: '',
     room: '',
+    status: 'accepting', // 민원 처리 상태 프로퍼티 추가
   });
 
   async function handleSubmit(event) {

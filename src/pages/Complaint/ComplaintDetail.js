@@ -68,6 +68,29 @@ const ComplaintDetail = ({ detailData, userRole }) => {
         <span className="detail-title">실습실 호실 : </span>
         <span className="detail-content">{detailData.room}</span>
       </div>
+      <div className="detail-row">
+        <span className="detail-title">민원 처리 상태 : </span>
+        <span className="detail-content">
+          {(() => {
+            switch (detailData.status) {
+              case 'accepting':
+                return '처리 중';
+              case 'received':
+                return '접수 완료';
+              case 'not_accepted':
+                return '접수 불가';
+              case 'in_progerss':
+                return '처리 중';
+              case 'completed':
+                return '처리 완료';
+              case 'unresolvable':
+                return '처리 불가';
+              default:
+                return '알 수 없음';
+            }
+          })()}
+        </span>
+      </div>
       <div>{userRole === 'admin' ? <AdminMenu /> : null}</div>
     </div>
   );

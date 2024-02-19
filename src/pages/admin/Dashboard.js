@@ -14,8 +14,7 @@ function Dashboard() {
       <div>
         <div>
           <div>
-            <h2>총 민원 수</h2>
-            <p>1,000</p>
+            <p>총 민원 수</p> {}
           </div>
         </div>
         <div>

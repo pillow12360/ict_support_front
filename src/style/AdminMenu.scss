@@ -22,3 +22,31 @@
     }
   }
 }
+
+.button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin: 5px;
+
+  // 공통 스타일
+  &:hover {
+    opacity: 0.8;
+  }
+
+  // 각 버튼별 색상 지정
+  &.edit {
+    background-color: #007bff; // 파란색
+  }
+
+  &.delete {
+    background-color: #dc3545; // 빨간색
+  }
+
+  &.process {
+    background-color: #28a745; // 초록색
+  }
+}

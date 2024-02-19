@@ -36,5 +36,27 @@
     p {
       margin: 5px 0;
     }
+    // 상태별 스타일 정의
+    &.accepting { background-color: #f0f0f0; }
+    &.received { background-color: #ffffe0; }
+    &.in_progress { background-color: #add8e6; }
+    &.completed { background-color: #90ee90; }
+    &.unresolvable { background-color: #ffcccb; }
+
+    // 상태 표시를 위한 추가적인 스타일
+    .status-indicator {
+      display: inline-block;
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-size: 0.75em;
+      font-weight: bold;
+      color: #fff;
+
+      &.accepting { background-color: #007bff; }
+      &.received { background-color: #28a745; }
+      &.in_progress { background-color: #ffc107; }
+      &.completed { background-color: #17a2b8; }
+      &.unresolvable { background-color: #dc3545; }
+    }
   }
 }

@@ -33,6 +33,7 @@ function ComplaintForm(props) {
     building: '',
     category: '',
     roomNumber: '',
+    // status : '',
   });
 
   async function handleSubmit(event) {
