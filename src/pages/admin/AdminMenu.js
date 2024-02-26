@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../style/AdminMenu.scss';
 import { useModal } from '../../ModalContext';
+import ComplaintFormFirebase from '../Complaint/ComplaintFormFirebase';
 
-const AdminMenu = () => {
+const AdminMenu = ({ detailData }) => {
   const { openModal } = useModal();
 
-  const handleEdit = () => {};
+  useEffect(() => {
+    console.log(`detail : `, detailData);
+  }, []);
+
+  const handleEdit = () => {
+    openModal(<ComplaintFormFirebase detailData={detailData} />);
+  };
+
   const handleDelete = () => {
     openModal(
       <>
@@ -16,17 +24,23 @@ const AdminMenu = () => {
     );
   };
 
-  const handleProcess = () => {};
+  const handleProcess = () => {
+    openModal();
+  };
 
   return (
     <div className="admin-menu-container">
       관리자 전용 메뉴
       <br />
-      <button className="button edit">수정</button>
+      <button className="button edit" onClick={handleEdit}>
+        수정
+      </button>
       <button className="button delete" onClick={handleDelete}>
         삭제
       </button>
-      <button className="button process">민원 처리</button>
+      <button className="button process" onClick={handleProcess}>
+        민원 처리
+      </button>
     </div>
   );
 };

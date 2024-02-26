@@ -32,10 +32,15 @@ const ComplaintList = () => {
 
   const handleClick = async (id) => {
     try {
-      const docRef = doc(db, 'complaints', id); // 'complaints' 문자열 사용
-      const docSnap = await getDoc(docRef); // getDoc 함수 사용
+      const docRef = doc(db, 'complaints', id); // 'complaints' 컬렉션에서 id를 사용하여 문서 참조 생성
+      const docSnap = await getDoc(docRef); // 문서 참조를 사용하여 문서 스냅샷 가져오기
+
       if (docSnap.exists()) {
-        const detailData = docSnap.data();
+        // 문서 데이터가 존재하면
+        const detailData = docSnap.data(); // 문서 데이터를 가져옴
+        detailData.id = docSnap.id; // 문서 데이터 객체에 문서의 ID (uid)를 추가
+
+        // 수정된 detailData와 userRole을 사용하여 모달 열기
         openModal(
           <ComplaintDetail detailData={detailData} userRole={userRole} />,
         );

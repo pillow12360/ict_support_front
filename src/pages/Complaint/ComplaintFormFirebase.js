@@ -1,17 +1,19 @@
 import React, { useContext, useState } from 'react';
 import db from '../../firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, doc, addDoc, updateDoc } from 'firebase/firestore';
 import { AuthContext } from '../../AuthContext';
 import styles from '../../style/ComplaintForm.module.scss';
 import { useModal } from '../../ModalContext';
 import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
 
-function ComplaintFormFirebase(props) {
+function ComplaintFormFirebase({ detailData }) {
   const { currentUser } = useContext(AuthContext);
+
   const { openModal, closeModal } = useModal();
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState({}); // 유효성 검사 (사용자 입력값에 빈 항목 체크)
+
   const validateForm = () => {
     let newErrors = {};
     if (!complaint.title) newErrors.title = '제목을 입력해주세요.';
@@ -26,13 +28,13 @@ function ComplaintFormFirebase(props) {
   };
 
   const [complaint, setComplaint] = useState({
-    title: '',
-    major: '',
-    content: '',
-    building: '',
-    category: '',
-    room: '',
-    status: 'accepting', // 민원 처리 상태 프로퍼티 추가
+    title: detailData ? detailData.title : '',
+    major: detailData ? detailData.major : '',
+    content: detailData ? detailData.content : '',
+    building: detailData ? detailData.building : '',
+    category: detailData ? detailData.category : '',
+    room: detailData ? detailData.room : '',
+    status: detailData ? detailData.status : 'accepting',
   });
 
   async function handleSubmit(event) {
@@ -49,30 +51,44 @@ function ComplaintFormFirebase(props) {
     }
 
     try {
-      await addDoc(collection(db, 'complaints'), {
-        ...complaint,
-        userId: currentUser.uid,
-        userName: currentUser.displayName,
-        timestamp: new Date(),
-      }).then(
+      if (detailData) {
+        // 민원 수정 로직
+        const docRef = doc(db, 'complaints', detailData.id);
+        await updateDoc(docRef, { ...complaint });
+        console.log('민원이 성공적으로 수정되었습니다.');
         openModal(
           <>
-            <h1>민원 접수 완료</h1> <br />
-            <p>
-              민원을 제출하여 주셔서 감사합니다. 빠른 시일 내에 처리하도록
-              하겠습니다.
-            </p>
-            <br />
-            <p>3초 후 자동으로 홈으로 돌아갑니다.</p>
+            <h2>알림</h2>
+            <p>민원이 성공적으로 수정되었습니다.</p>
           </>,
-        ),
-        setTimeout(() => {
-          closeModal();
-          navigate('/home');
-        }, 3000), // 3초 후 홈으로 리다이렉트
-      );
+        );
+      } else {
+        // 민원 생성 로직
+        await addDoc(collection(db, 'complaints'), {
+          ...complaint,
+          userId: currentUser.uid,
+          userName: currentUser.displayName,
+          timestamp: new Date(),
+        }).then(
+          openModal(
+            <>
+              <h1>민원 접수 완료</h1> <br />
+              <p>
+                민원을 제출하여 주셔서 감사합니다. 빠른 시일 내에 처리하도록
+                하겠습니다.
+              </p>
+              <br />
+              <p>3초 후 자동으로 홈으로 돌아갑니다.</p>
+            </>,
+          ),
+          setTimeout(() => {
+            closeModal();
+            navigate('/home');
+          }, 3000), // 3초 후 홈으로 리다이렉트
+        );
 
-      console.log('민원이 성공적으로 접수 되었습니다.');
+        console.log('민원이 성공적으로 접수 되었습니다.');
+      }
     } catch (error) {
       console.error('민원 추가 중 오류 발생:', error);
     }
@@ -89,7 +105,12 @@ function ComplaintFormFirebase(props) {
   return (
     <form onSubmit={handleSubmit} className={styles.container}>
       <div className={styles.mb3}>
-        <div className={styles.title}>민원 접수 페이지</div>
+        {detailData ? (
+          <div className={styles.title}>민원 수정 페이지</div>
+        ) : (
+          <div className={styles.title}>민원 접수 페이지</div>
+        )}
+
         <label htmlFor="title" className={styles.label}>
           민원 제목
         </label>

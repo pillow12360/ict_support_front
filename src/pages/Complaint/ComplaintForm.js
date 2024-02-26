@@ -133,8 +133,8 @@ function ComplaintForm(props) {
           value={complaint.category}
           onChange={handleChange}
         >
-          <option value="">카테고리를 선택하세요</option>
-          <option value="HW">하드웨어</option>
+          <option value="">카테고리를 선택하세요</option>'{' '}
+          <option value="HW">하드웨어</option>'{' '}
           <option value="SW">소프트웨어</option>
           <option value="facility">실습실 시설</option>
           <option value="etc">기타</option>

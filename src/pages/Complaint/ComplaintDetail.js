@@ -91,7 +91,9 @@ const ComplaintDetail = ({ detailData, userRole }) => {
           })()}
         </span>
       </div>
-      <div>{userRole === 'admin' ? <AdminMenu /> : null}</div>
+      <div>
+        {userRole === 'admin' ? <AdminMenu detailData={detailData} /> : null}
+      </div>
     </div>
   );
 };

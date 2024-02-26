@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
       // 문서가 존재하지 않으면 기본 권한으로 새로운 사용자 문서를 생성
       const defaultRole = 'user'; // 기본 권한 설정
       await setDoc(userRef, {
-        uid: user.uid,
+        userId: user.uid,
         email: user.email,
         displayName: user.displayName,
         role: defaultRole,

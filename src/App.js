@@ -16,6 +16,7 @@ import ComplaintList from './pages/Complaint/ComplaintList';
 import LoginForm from './auth/LoginForm';
 import SignupForm from './auth/SignupForm';
 import ComplaintManage from './pages/admin/ComplaintManage';
+import AdminMenu from './pages/admin/AdminMenu';
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
                 />
                 <Route path="*" element={<NotFound />}></Route>
                 <Route path="/admin" element={<ComplaintManage />} />
+                <Route path="adminmenu" element={<AdminMenu />} />
                 {/* 추가 라우트 */}
               </Routes>
             </div>
