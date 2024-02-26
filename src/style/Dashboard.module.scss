@@ -1,0 +1,81 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f4f7f6; // 배경색
+  min-height: 100vh;
+
+  h2 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .complaint-stats {
+    width: 100%;
+    max-width: 600px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+
+    p {
+      font-size: 1rem;
+      color: #555;
+      margin: 10px 0;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .pie-chart-container {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// 색상 및 각 상태별 스타일
+.status-accepting {
+  color: #FFBB28;
+}
+
+.status-received {
+  color: #FF8042;
+}
+
+.status-in_progress {
+  color: #0088FE;
+}
+
+.status-completed {
+  color: #00C49F;
+}
+
+.status-unresolvable {
+  color: #FF6060;
+}
+
+// 반응형 디자인
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 10px;
+  }
+
+  .complaint-stats, .pie-chart-container {
+    padding: 15px;
+  }
+}

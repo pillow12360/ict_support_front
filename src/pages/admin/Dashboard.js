@@ -9,6 +9,15 @@ function Dashboard() {
   const [complaintStatus, setComplaintStatus] = useState([]);
 
   useEffect(() => {
+    const STATUS_LABELS = {
+      accepting: '접수 중',
+      received: '접수 완료',
+      not_accepted: '접수 불가',
+      in_progress: '처리 중',
+      completed: '완료',
+      unresolvable: '처리 불가',
+    };
+
     const fetchComplaintData = async () => {
       const complaintQuery = query(collection(db, 'complaints'));
       const querySnapshot = await getDocs(complaintQuery);
@@ -30,13 +39,14 @@ function Dashboard() {
       });
 
       // `status` 객체를 배열로 변환하여 차트 데이터로 사용합니다.
-      const chartData = Object.keys(status).map((key) => ({
-        name: key,
-        value: status[key],
-      }));
+      const chartData = Object.keys(status)
+        .map((key) => ({
+          name: STATUS_LABELS[key], // 영문 상태를 한글로 변환
+          value: status[key],
+        }))
+        .filter((entry) => entry.value > 0); // 값이 0보다 큰 항목만 필터링
 
       setComplaintStatus(chartData);
-      console.log(complaintStatus);
     };
 
     fetchComplaintData();
@@ -52,7 +62,7 @@ function Dashboard() {
               총 민원 수 :{' '}
               {complaintStatus.reduce((acc, curr) => acc + curr.value, 0)}
             </p>
-            {/* 옵셔널 체이닝을 사용하여 각 상태별 민원 수 안전하게 표시 */}
+
             <p>접수 중 : {complaintStatus[0]?.value || 0}</p>
             <p>접수 불가 : {complaintStatus[1]?.value || 0}</p>
             <p>처리 중 : {complaintStatus[2]?.value || 0}</p>
