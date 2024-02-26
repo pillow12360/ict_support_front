@@ -40,7 +40,6 @@ const App = () => {
                 />
                 <Route path="*" element={<NotFound />}></Route>
                 <Route path="/admin" element={<ComplaintManage />} />
-                <Route path="adminmenu" element={<AdminMenu />} />
                 {/* 추가 라우트 */}
               </Routes>
             </div>

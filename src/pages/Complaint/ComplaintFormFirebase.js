@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useLocation } from 'react';
 import db from '../../firebase';
 import { collection, doc, addDoc, updateDoc } from 'firebase/firestore';
 import { AuthContext } from '../../AuthContext';
@@ -6,8 +6,10 @@ import styles from '../../style/ComplaintForm.module.scss';
 import { useModal } from '../../ModalContext';
 import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
 
-function ComplaintFormFirebase({ detailData }) {
+function ComplaintFormFirebase() {
   const { currentUser } = useContext(AuthContext);
+  const location = useLocation();
+  const { detailData } = location.state || {}; // state가 없는 경우를 대비한 기본값 설정
 
   const { openModal, closeModal } = useModal();
   const navigate = useNavigate();

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import '../../style/AdminMenu.scss';
 import { useModal } from '../../ModalContext';
 import ComplaintFormFirebase from '../Complaint/ComplaintFormFirebase';
+import { Link } from '../../../node_modules/react-router-dom/dist/index';
 
 const AdminMenu = ({ detailData }) => {
   const { openModal } = useModal();
@@ -11,7 +12,7 @@ const AdminMenu = ({ detailData }) => {
   }, []);
 
   const handleEdit = () => {
-    openModal(<ComplaintFormFirebase detailData={detailData} />);
+    <ComplaintFormFirebase detailData={detailData} />;
   };
 
   const handleDelete = () => {
@@ -32,9 +33,15 @@ const AdminMenu = ({ detailData }) => {
     <div className="admin-menu-container">
       관리자 전용 메뉴
       <br />
-      <button className="button edit" onClick={handleEdit}>
+      <Link
+        to={{
+          pathname: 'complaintform',
+          state: { detailData },
+        }}
+        className="button edit"
+      >
         수정
-      </button>
+      </Link>
       <button className="button delete" onClick={handleDelete}>
         삭제
       </button>

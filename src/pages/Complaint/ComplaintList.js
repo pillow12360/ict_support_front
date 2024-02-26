@@ -38,7 +38,7 @@ const ComplaintList = () => {
       if (docSnap.exists()) {
         // 문서 데이터가 존재하면
         const detailData = docSnap.data(); // 문서 데이터를 가져옴
-        detailData.id = docSnap.id; // 문서 데이터 객체에 문서의 ID (uid)를 추가
+        detailData.id = id; // 문서 데이터 객체에 문서의 ID (uid)를 추가
 
         // 수정된 detailData와 userRole을 사용하여 모달 열기
         openModal(
