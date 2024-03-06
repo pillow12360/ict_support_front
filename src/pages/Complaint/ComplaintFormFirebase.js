@@ -1,20 +1,41 @@
-import React, { useContext, useState, useLocation } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import db from '../../firebase';
 import { collection, doc, addDoc, updateDoc } from 'firebase/firestore';
 import { AuthContext } from '../../AuthContext';
 import styles from '../../style/ComplaintForm.module.scss';
 import { useModal } from '../../ModalContext';
-import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
+import {
+  useNavigate,
+  useLocation,
+} from '../../../node_modules/react-router-dom/dist/index';
 
 function ComplaintFormFirebase() {
   const { currentUser } = useContext(AuthContext);
+
   const location = useLocation();
-  const { detailData } = location.state || {}; // state가 없는 경우를 대비한 기본값 설정
+  const { detailData } = location.state || {};
 
   const { openModal, closeModal } = useModal();
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState({}); // 유효성 검사 (사용자 입력값에 빈 항목 체크)
+
+  useEffect(() => {
+    if (detailData) {
+      setComplaint({
+        title: detailData.title || '',
+        major: detailData.major || '',
+        content: detailData.content || '',
+        building: detailData.building || '',
+        category: detailData.category || '',
+        room: detailData.room || '',
+        status: detailData.status || 'accepting',
+      });
+    }
+
+    console.log(`form detail`, detailData);
+    console.log(location, location.state);
+  }, [detailData]);
 
   const validateForm = () => {
     let newErrors = {};
@@ -217,9 +238,15 @@ function ComplaintFormFirebase() {
         {errors.room && <div className={styles.error}>{errors.room}</div>}
       </div>
 
-      <button type="submit" className={styles.button}>
-        민원 제출 하기
-      </button>
+      {detailData ? (
+        <button type="submit" className={styles.button}>
+          민원 수정 하기
+        </button>
+      ) : (
+        <button type="submit" className={styles.button}>
+          민원 제출 하기
+        </button>
+      )}
     </form>
   );
 }

@@ -32,7 +32,7 @@ const App = () => {
                 <Route path="/authscreen" element={<AuthScreen />} />
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/signup" element={<SignupForm />} />
-                <Route path="/complaintform" element={<ComplaintForm />} />
+                {/* <Route path="/complaintform" element={<ComplaintForm />} /> */}
                 <Route path="/complaintlist" element={<ComplaintList />} />
                 <Route
                   path="/complaintformfirebase"
