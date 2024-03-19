@@ -1,6 +1,6 @@
 import React from 'react';
-import { useModal } from './ModalContext';
-import styles from './style/Modal.module.scss';
+import { useModal } from '../contexts/ModalContext';
+import styles from '../style/Modal.module.scss';
 
 function Modal({ children }) {
   const { isModalOpen, closeModal } = useModal();

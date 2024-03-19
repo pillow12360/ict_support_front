@@ -8,9 +8,9 @@ import {
   doc,
   getDoc,
 } from 'firebase/firestore';
-import { AuthContext } from '../../AuthContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import '../../style/ComplaintList.scss';
-import { useModal } from '../../ModalContext';
+import { useModal } from '../../contexts/ModalContext';
 import ComplaintDetail from './ComplaintDetail';
 
 // 유저 id 값으로 접수한 민원 조회 컴포넌트

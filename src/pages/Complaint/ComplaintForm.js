@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../AuthContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import styles from '../../style/ComplaintForm.module.scss';
-import { useModal } from '../../ModalContext';
+import { useModal } from '../../contexts/ModalContext';
 import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
 import axios from '../../../node_modules/axios/index';
 

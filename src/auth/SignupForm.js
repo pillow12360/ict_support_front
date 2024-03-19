@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from '../../node_modules/axios/index';
 import styles from '../style/SignupForm.module.scss';
-import { useModal } from '../ModalContext';
+import { useModal } from '../contexts/ModalContext';
 import { useNavigate } from '../../node_modules/react-router-dom/dist/index';
 
 const SignupForm = () => {

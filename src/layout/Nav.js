@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../style/Nav.scss';
 import GoogleLogin from '../auth/GoogleLogin';
-import { AuthContext } from '../AuthContext';
+import { AuthContext } from '../contexts/AuthContext';
 
 const Nav = () => {
   const { userRole, currentUser } = useContext(AuthContext);

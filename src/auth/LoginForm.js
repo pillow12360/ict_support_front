@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../style/LoginForm.module.scss';
 import axios from 'axios';
-import { useModal } from '../ModalContext';
+import { useModal } from '../contexts/ModalContext';
 import { useNavigate } from '../../node_modules/react-router-dom/dist/index';
 
 const LoginForm = () => {

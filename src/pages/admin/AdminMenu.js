@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import '../../style/AdminMenu.scss';
-import { useModal } from '../../ModalContext';
+import { useModal } from '../../contexts/ModalContext';
 import ComplaintFormFirebase from '../Complaint/ComplaintFormFirebase';
 import { Link } from '../../../node_modules/react-router-dom/dist/index';
 import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
