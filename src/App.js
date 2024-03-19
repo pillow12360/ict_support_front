@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import First from './pages/First';
 import AuthScreen from './auth/AuthScreen'; // 가정: 로그인 폼 컴포넌트의 경로
 import NotFound from './pages/NotFound';
-import ComplaintForm from './pages/Complaint/ComplaintForm';
+// import ComplaintForm from './pages/Complaint/ComplaintForm';
 import Nav from './layout/Nav';
 import Footer from './layout/Footer';
 import './App.css';
@@ -16,7 +16,8 @@ import ComplaintList from './pages/Complaint/ComplaintList';
 import LoginForm from './auth/LoginForm';
 import SignupForm from './auth/SignupForm';
 import ComplaintManage from './pages/admin/ComplaintManage';
-import AdminMenu from './pages/admin/AdminMenu';
+// import AdminMenu from './pages/admin/AdminMenu';
+import Chat from './DirectMassage/Chat';
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
                 />
                 <Route path="*" element={<NotFound />}></Route>
                 <Route path="/admin" element={<ComplaintManage />} />
+                <Route path="/directmessage" element={<Chat />} />
                 {/* 추가 라우트 */}
               </Routes>
             </div>

@@ -1,0 +1,25 @@
+@import 'common';
+
+.message-list {
+  @extend %container-style;
+  flex-grow: 1;
+  overflow-y: auto;
+  margin: 0 10px;
+  max-height: 60vh;
+}
+
+.message-item {
+  @extend %text-style;
+  background-color: #f0f0f0;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  
+  .sender {
+    font-weight: bold;
+  }
+
+  .message-text {
+    margin-left: 5px;
+  }
+}

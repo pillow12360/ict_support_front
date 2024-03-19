@@ -20,6 +20,9 @@ const Nav = () => {
             </>
           ) : null}
         </li>
+        <li>
+          <Link to="directmessage">DM</Link>
+        </li>
         {/* <li>
           <Link to="/complaintform">민원 접수 1</Link>
         </li> */}

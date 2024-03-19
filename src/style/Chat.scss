@@ -1,0 +1,15 @@
+@import 'common';
+
+.chat-container {
+  @extend %container-style;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 80vh;
+}
+
+.title {
+  @extend %text-style;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
