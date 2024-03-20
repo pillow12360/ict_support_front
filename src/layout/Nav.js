@@ -20,9 +20,7 @@ const Nav = () => {
             </>
           ) : null}
         </li>
-        <li>
-          <Link to="directmessage">DM</Link>
-        </li>
+
         {/* <li>
           <Link to="/complaintform">민원 접수 1</Link>
         </li> */}
@@ -41,7 +39,11 @@ const Nav = () => {
               <Link to="/signup">회원가입</Link>
             </li>
           </>
-        ) : null}
+        ) : (
+          <li>
+            <Link to="directmessage">DM</Link>
+          </li>
+        )}
         <li>
           <GoogleLogin />
         </li>

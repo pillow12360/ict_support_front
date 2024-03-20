@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import '../style/MessageInput.scss'; // 스타일 시트 임포트
 
-function MessageInput({ onSendMessage }) {
+function MessageInput() {
   const [message, setMessage] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSendMessage(message);
     setMessage('');
   };
 

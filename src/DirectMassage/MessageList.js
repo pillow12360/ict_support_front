@@ -1,7 +1,7 @@
 import React from 'react';
 import '../style/MessageList.scss'; // 스타일 시트 임포트
 
-function MessageList({ messages }) {
+const MessageList = ({ messages }) => {
   return (
     <div className="message-list">
       {messages.map((message, index) => (
@@ -12,6 +12,6 @@ function MessageList({ messages }) {
       ))}
     </div>
   );
-}
+};
 
 export default MessageList;

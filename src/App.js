@@ -18,6 +18,8 @@ import SignupForm from './auth/SignupForm';
 import ComplaintManage from './pages/admin/ComplaintManage';
 // import AdminMenu from './pages/admin/AdminMenu';
 import Chat from './DirectMassage/Chat';
+import MessageInput from './DirectMassage/MessageInput';
+import MessageList from './DirectMassage/MessageList';
 
 const App = () => {
   return (
@@ -41,7 +43,10 @@ const App = () => {
                 />
                 <Route path="*" element={<NotFound />}></Route>
                 <Route path="/admin" element={<ComplaintManage />} />
-                <Route path="/directmessage" element={<Chat />} />
+                <Route path="/directmessage" element={<Chat />}>
+                  <Route path=":dminput" element={MessageInput} />
+                  <Route path=":dmlist" element={MessageList} />
+                </Route>
                 {/* 추가 라우트 */}
               </Routes>
             </div>
