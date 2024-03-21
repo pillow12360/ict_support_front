@@ -1,36 +1,40 @@
-@import 'common';
 @import 'variables';
 
-$button-color : #3498db;
 .message-input-container {
   display: flex;
-  justify-content: space-between; // 컨테이너 내부 아이템들 사이의 공간을 균등하게 배치
-  align-items: center; // 아이템들을 세로 중앙으로 정렬
-  margin-top: 10px;
-  padding: 0 10px; // 좌우 패딩 추가
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; // 화면 전체 너비 사용
+  padding: 10px; // 적절한 패딩으로 내부 요소와의 간격 조정
+  position: fixed;
+  bottom: 0; // 화면 하단에 고정
+  left: 0;
+  background-color: #fff; // 배경색 설정
+  border-top: 1px solid #ccc; // 상단 경계선 추가
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); // 상단에 그림자 효과로 구분감 추가
 }
 
 .input-field {
-  flex-grow: 1;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
-  margin-right: 10px; // 입력 필드와 버튼 사이의 간격
+  flex-grow: 1; // 가능한 모든 공간 차지
+  border: 2px solid #ccc; // 경계선 더 뚜렷하게
+  width : 45vh;
+  border-radius: 25px; // 둥근 모서리
+  padding: 10px 20px; // 내부 여백
+  margin-right: 10px; // 입력 칸과 전송 버튼 사이 간격
+  outline: none; // 포커스 시 외곽선 제거
+  font-size: 16px; // 적절한 글꼴 크기
 }
 
 .send-button {
-  @extend .button; // 공통 버튼 스타일 적용
-  padding: 10px 15px; // 버튼의 패딩 조절
-  border-radius: 4px; // 버튼의 모서리 둥글게
+  padding: 8px 16px; // 버튼 내부 여백
+  border: none; // 경계선 제거
+  background-color: $primary-color; // 주색상 사용
+  color: #fff; // 글자색
+  border-radius: 20px; // 둥근 모서리
   cursor: pointer; // 마우스 오버 시 커서 변경
-  transition: background-color 0.3s, transform 0.2s; // 배경색과 변형에 대한 전환 효과 추가
+  transition: background-color 0.3s; // 배경색 변화에 애니메이션 효과
 
   &:hover {
-    background-color: darken($button-color, 10%); // 버튼 색상을 어둡게 변경
-    transform: translateY(-2px); // 버튼을 약간 위로 이동
-  }
-
-  &:active {
-    transform: translateY(1px); // 클릭 시 버튼을 약간 아래로 이동
+    background-color: darken($primary-color, 10%); // 호버 시 색상 어둡게 변경
   }
 }

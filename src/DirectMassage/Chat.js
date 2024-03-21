@@ -28,6 +28,7 @@ function Chat() {
             timestamp: messageItem.timestamp,
             read: messageItem.read,
           });
+          loadedMessages.sort((a, b) => a.timestamp - b.timestamp); // 먼저 작성한 메시지가 위로 가도록 정렬
         }
       }
 
@@ -41,8 +42,8 @@ function Chat() {
 
   return (
     <div className="chat-container">
-      <h2 className="title">Direct Message</h2>
-      <MessageList messages={messages} />
+      <h2 className="chat-title">Direct Message</h2>
+      <MessageList className="message-list" messages={messages} />
       <MessageInput currentUser={currentUser} />
     </div>
   );

@@ -1,15 +1,42 @@
+@import 'variables';
 @import 'common';
 
 .chat-container {
-  @extend %container-style;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 70vh;
+  align-items: center;
+  width: 100%;
+  max-width: 500px; // 최대 너비 설정
+  margin: auto; // 화면 가운데 정렬
+  height: 70vh; // 높이 설정
+  padding: 20px; // 내부 패딩
+  background-color: rgba(255, 255, 255, 0.95); // 배경색
+  backdrop-filter: blur(10px); // 배경 블러 효과
+  border-radius: 10px; // 모서리 둥글게 처리
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // 그림자 효과
+  overflow: hidden; // 내부 요소가 넘칠 경우 숨김 처리
+  position: relative; // 하위 컴포넌트의 위치를 상대적으로 지정
+  z-index: 1; // 필요한 경우 z-index 조정
 }
 
-.title {
-  @extend %text-style;
-  font-size: 24px;
-  margin-bottom: 20px;
+.chat-title {
+  display: flex;
+  flex-direction: column;
+}
+
+// MessageInput 컴포넌트의 위치를 조정하기 위한 추가 스타일
+.message-input-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  background-color: #f0f0f0; // 입력 영역의 배경색
+}
+
+// 필요한 경우 MessageList에 대한 추가 스타일 정의
+.message-list {
+  flex-grow: 1;
+  overflow-y: auto; // 메시지 목록 스크롤 가능하도록 설정
 }

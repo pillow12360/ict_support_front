@@ -5,13 +5,14 @@ import '../style/MessageInput.scss'; // 스타일 시트 임포트
 function MessageInput({ currentUser }) {
   const [message, setMessage] = useState('');
   const database = getDatabase(); // Firebase Realtime Database 인스턴스 가져오기
+  const sender = currentUser.displayName;
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     // 메시지 객체 생성
     const newMessage = {
-      sender: currentUser.name, // 예시용. 실제로는 현재 사용자의 ID를 사용해야 합니다.
+      sender: sender, // 예시용. 실제로는 현재 사용자의 ID를 사용해야 합니다.
       receiver: 'user2', // 예시용. 실제로는 메시지 받는 사람의 ID를 사용해야 합니다.
       message: message,
       timestamp: Date.now(), // 메시지 전송 시각
@@ -29,10 +30,11 @@ function MessageInput({ currentUser }) {
     <div className="message-input-container">
       <form onSubmit={handleSubmit}>
         <input
+          className="input-field"
           type="text"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          placeholder="보낼 메시지를 입력해주세요..."
+          placeholder="보낼 메시지를 입력해주세요"
         />
         <button type="submit" className="send-button">
           전송
