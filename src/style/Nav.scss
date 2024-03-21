@@ -62,19 +62,27 @@ nav {
 
   // 미디어 쿼리를 사용하여 모바일 환경에 대응
   @media (max-width: 768px) {
-    flex-direction: column;
-    padding: 10px;
-
-    .title {
-      margin-bottom: 10px; // 모바일에서 title과 메뉴 사이의 간격 조정
-    }
-
-    ul {
+    nav {
       flex-direction: column;
-      width: 100%;
-
-      li {
-        margin-bottom: 5px; // 모바일에서 메뉴 항목 사이의 간격 조정
+      padding: 10px;
+  
+      .title {
+        margin-bottom: 20px; // 모바일 환경에서 제목과 항목 사이 간격 증가
+      }
+  
+      ul {
+        flex-direction: column;
+        width: 100%; // 모바일 환경에서 ul의 너비를 100%로 설정
+  
+        li {
+          text-align: center; // 모바일 환경에서 항목을 가운데 정렬
+          margin-bottom: 10px; // 모바일 환경에서 항목 사이의 간격 증가
+  
+          a {
+            width: 100%; // a 태그의 너비를 li와 같게 설정
+            padding: 10px 0; // 모바일 환경에서 상하 패딩 증가
+          }
+        }
       }
     }
   }

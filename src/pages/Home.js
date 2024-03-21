@@ -31,6 +31,9 @@ const Home = () => {
           <Link to="/complaintlist" className={styles.btn}>
             민원 조회
           </Link>
+          <Link to="/directmessage" className={styles.btn}>
+            채팅방
+          </Link>
         </div>
       </div>
     </div>
