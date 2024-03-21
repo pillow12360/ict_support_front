@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { collection, getDocs, query } from 'firebase/firestore';
-import { db } from '../../firebase/firebase';
+import { db } from '../../firebase';
 
 const COLORS = ['#FFBB28', '#FF8042', '#0088FE'];
 

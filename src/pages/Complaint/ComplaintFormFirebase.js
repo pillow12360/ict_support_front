@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { db } from '../../firebase/firebase';
+import { db } from '../../firebase';
 import { collection, doc, addDoc, updateDoc } from 'firebase/firestore';
 import { AuthContext } from '../../contexts/AuthContext';
 import styles from '../../style/ComplaintForm.module.scss';

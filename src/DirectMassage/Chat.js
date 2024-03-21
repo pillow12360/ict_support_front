@@ -3,7 +3,7 @@ import MessageList from './MessageList';
 import MessageInput from './MessageInput';
 import '../style/Chat.scss'; // 스타일 시트 임포트
 import { getDatabase, ref, onValue, off } from 'firebase/database';
-import { realtimeDatabase } from '../firebase/firebase.js';
+import { realtimeDatabase } from '../firebase.js';
 import { AuthContext } from '../contexts/AuthContext';
 
 function Chat() {

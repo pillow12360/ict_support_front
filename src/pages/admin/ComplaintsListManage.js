@@ -1,6 +1,6 @@
 // src/components/ComplaintsList.js
 import React, { useState, useEffect } from 'react';
-import { db } from '../../firebase/firebase';
+import { db } from '../../firebase.js';
 import { collection, query, getDocs } from 'firebase/firestore';
 
 const ComplaintsListManage = () => {
