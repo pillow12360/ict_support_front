@@ -1,8 +1,13 @@
 @import 'common';
+@import 'variables';
 
+$button-color : #3498db;
 .message-input-container {
   display: flex;
+  justify-content: space-between; // 컨테이너 내부 아이템들 사이의 공간을 균등하게 배치
+  align-items: center; // 아이템들을 세로 중앙으로 정렬
   margin-top: 10px;
+  padding: 0 10px; // 좌우 패딩 추가
 }
 
 .input-field {
@@ -10,9 +15,22 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
-  margin-right: 10px;
+  margin-right: 10px; // 입력 필드와 버튼 사이의 간격
 }
 
 .send-button {
-  @extend .button;
+  @extend .button; // 공통 버튼 스타일 적용
+  padding: 10px 15px; // 버튼의 패딩 조절
+  border-radius: 4px; // 버튼의 모서리 둥글게
+  cursor: pointer; // 마우스 오버 시 커서 변경
+  transition: background-color 0.3s, transform 0.2s; // 배경색과 변형에 대한 전환 효과 추가
+
+  &:hover {
+    background-color: darken($button-color, 10%); // 버튼 색상을 어둡게 변경
+    transform: translateY(-2px); // 버튼을 약간 위로 이동
+  }
+
+  &:active {
+    transform: translateY(1px); // 클릭 시 버튼을 약간 아래로 이동
+  }
 }

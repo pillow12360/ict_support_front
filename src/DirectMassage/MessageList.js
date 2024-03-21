@@ -6,8 +6,11 @@ const MessageList = ({ messages }) => {
     <div className="message-list">
       {messages.map((message, index) => (
         <div key={index} className="message-item">
-          <span className="sender">{message.sender}:</span>
-          <span className="message-text">{message.text}</span>
+          <span className="sender">{message.sender}</span>
+          <span className="message-text">{message.message}</span>
+          <span className="read-status">
+            {message.read ? '읽음' : '읽지 않음'}
+          </span>
         </div>
       ))}
     </div>

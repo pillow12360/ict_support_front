@@ -14,12 +14,27 @@
   padding: 8px 12px;
   margin-bottom: 10px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
   
   .sender {
     font-weight: bold;
+    margin-right: 10px;
   }
 
   .message-text {
-    margin-left: 5px;
+    margin-right: auto; // 이를 통해 메시지 텍스트와 읽음 상태 사이에 공간을 만듭니다.
+  }
+
+  .read-status {
+    // 읽음 상태에 따라 색상을 다르게 표시합니다.
+    color: green;
+    font-weight: bold;
+
+    &:before {
+      content: "•"; // 읽음 상태 앞에 점을 추가합니다.
+      margin-right: 5px;
+      font-size: larger;
+    }
   }
 }

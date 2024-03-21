@@ -11,27 +11,39 @@ function Chat() {
   const { currentUser, userRole } = useContext(AuthContext);
 
   useEffect(() => {
-    const dbRef = ref(realtimeDatabase, 'messages'); // 'messages'는 메시지를 저장하는 데이터베이스 내의 경로입니다.
+    // 'messages' 경로의 참조 생성
+    const dbRef = ref(realtimeDatabase, 'messages');
     const unsubscribe = onValue(dbRef, (snapshot) => {
       const data = snapshot.val();
       const loadedMessages = [];
-      for (const key in data) {
-        loadedMessages.push({
-          id: key,
-          ...data[key],
-        });
+
+      if (data) {
+        for (const key in data) {
+          const messageItem = data[key];
+          loadedMessages.push({
+            id: key,
+            sender: messageItem.sender,
+            receiver: messageItem.receiver,
+            message: messageItem.message,
+            timestamp: messageItem.timestamp,
+            read: messageItem.read,
+          });
+        }
       }
-      setMessages(loadedMessages); // 상태 업데이트
+
+      // 메시지 상태 업데이트
+      setMessages(loadedMessages);
     });
 
-    return () => off(dbRef, 'value', unsubscribe); // 컴포넌트 언마운트 시 리스너 정리
+    // 컴포넌트 언마운트 시 리스너 정리
+    return () => off(dbRef, 'value', unsubscribe);
   }, []);
 
   return (
     <div className="chat-container">
       <h2 className="title">Direct Message</h2>
       <MessageList messages={messages} />
-      <MessageInput />
+      <MessageInput currentUser={currentUser} />
     </div>
   );
 }
