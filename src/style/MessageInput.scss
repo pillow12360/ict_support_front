@@ -4,37 +4,51 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%; // 화면 전체 너비 사용
-  padding: 10px; // 적절한 패딩으로 내부 요소와의 간격 조정
+  width: 100%;
+  padding: 10px;
   position: fixed;
-  bottom: 0; // 화면 하단에 고정
+  bottom: 0;
   left: 0;
-  background-color: #fff; // 배경색 설정
-  border-top: 1px solid #ccc; // 상단 경계선 추가
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); // 상단에 그림자 효과로 구분감 추가
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    padding: 8px; // 모바일 환경에서는 패딩을 조금 줄임
+  }
 }
 
 .input-field {
-  flex-grow: 1; // 가능한 모든 공간 차지
-  border: 2px solid #ccc; // 경계선 더 뚜렷하게
-  width : 45vh;
-  border-radius: 25px; // 둥근 모서리
-  padding: 10px 20px; // 내부 여백
-  margin-right: 10px; // 입력 칸과 전송 버튼 사이 간격
-  outline: none; // 포커스 시 외곽선 제거
-  font-size: 16px; // 적절한 글꼴 크기
+  flex-grow: 1;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  outline: none;
+  font-size: 16px;
+  width: auto; // 가변 너비 설정
+
+  @media (max-width: 768px) {
+    font-size: 14px; // 모바일 환경에서 글꼴 크기 줄임
+    padding: 8px 15px; // 패딩 조정
+    margin-right: 8px; // 마진 조정
+  }
 }
 
 .send-button {
-  padding: 8px 16px; // 버튼 내부 여백
-  border: none; // 경계선 제거
-  background-color: $primary-color; // 주색상 사용
-  color: #fff; // 글자색
-  border-radius: 20px; // 둥근 모서리
-  cursor: pointer; // 마우스 오버 시 커서 변경
-  transition: background-color 0.3s; // 배경색 변화에 애니메이션 효과
+  padding: 8px 16px;
+  border: none;
+  background-color: $primary-color;
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 
   &:hover {
-    background-color: darken($primary-color, 10%); // 호버 시 색상 어둡게 변경
+    background-color: darken($primary-color, 10%);
+  }
+
+  @media (max-width: 768px) {
+    padding: 6px 12px; // 모바일 환경에서 버튼 패딩 조정
   }
 }

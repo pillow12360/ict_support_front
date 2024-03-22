@@ -4,10 +4,16 @@
   @extend %container-style;
   flex-grow: 1;
   overflow-y: auto;
-  margin: 20 10px;
+  margin: 20px 10px;
   margin-top: 60px;
-  margin-bottom: px;
+  margin-bottom: 0px; // 수정됨: 'px' 단위가 빠진 값을 적절한 값으로 수정해야 합니다.
   max-height: 55vh;
+
+  @media (max-width: 768px) { // 모바일과 태블릿 환경을 위한 미디어 쿼리
+    margin: 15px 5px;
+    margin-top: 50px;
+    max-height: 65vh; // 화면의 높이를 조금 더 사용할 수 있도록 조정
+  }
 }
 
 .message-item {
@@ -18,10 +24,18 @@
   border-radius: 5px;
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) { // 모바일과 태블릿 환경을 위한 미디어 쿼리
+    padding: 6px 10px; // 모바일 환경에서는 패딩을 조금 줄임
+    margin-bottom: 8px; // 마진 또한 조금 줄임
+  }
   
   .sender {
     font-weight: bold;
     margin-right: 10px;
+    @media (max-width: 768px) { // 폰트 크기 조정을 위한 미디어 쿼리
+      font-size: 0.9em; // 모바일 환경에서는 폰트 크기를 조금 줄임
+    }
   }
 
   .message-text {
@@ -29,7 +43,6 @@
   }
 
   .read-status {
-    // 읽음 상태에 따라 색상을 다르게 표시합니다.
     color: green;
     font-weight: bold;
 
@@ -37,6 +50,10 @@
       content: "•"; // 읽음 상태 앞에 점을 추가합니다.
       margin-right: 5px;
       font-size: larger;
+    }
+
+    @media (max-width: 768px) { // 폰트 크기 조정을 위한 미디어 쿼리
+      font-size: 0.8em; // 모바일 환경에서는 상태 표시 폰트 크기를 줄임
     }
   }
 }
