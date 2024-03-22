@@ -1,6 +1,8 @@
 $primary-color: #3498db;
 $hover-color: darken($primary-color, 10%);
 $text-color: #ffffff;
+$dropdown-bg-color: #3498db; // 드롭다운 배경색
+$dropdown-active-color: darken($dropdown-bg-color, 10%); // 활성화 상태의 배경색
 $nav-height: 65px;
 
 nav {
@@ -15,12 +17,19 @@ nav {
   border-bottom-right-radius: 50px;
   border-bottom-left-radius: 70px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-  position: fixed;
+  // position: fixed;
   width: 100%;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
 
+  .nav-container {
+    display: flex;
+    justify-content: space-between; // 제목과 메뉴 버튼 사이의 공간을 균등하게 배분
+    width: 100%;
+    align-items: center;
+  }
+  
   .title {
     font-size: 1.5em;
     font-weight: bold;
@@ -32,74 +41,83 @@ nav {
     }
   }
 
-  a {
+  .dropdown-button {
+    padding: 10px 20px;
+    background-color: $dropdown-bg-color;
     color: $text-color;
-    text-decoration: none;
-    padding: 10px 15px;
-    display: block;
-    transition: color 0.3s ease, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 
-    &:hover {
-      background-color: $hover-color;
-      transform: translateY(-2px);
+    &:hover, &.active {
+      background-color: $dropdown-active-color;
     }
   }
 
-  ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
+  .dropdown-content {
+    display: none; // 초기 상태는 숨김
+    position: absolute;
+    background-color: $dropdown-bg-color;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    width: 100%;
+    z-index: 1;
 
-    li {
-      margin: 0 10px;
-
-      a {
-        &:hover {
-          color: darken($text-color, 10%);
-          background-color: lighten($hover-color, 5%);
-        }
-      }
+    &.show {
+      display: block; // 클릭 시 보여짐
+      animation: slideIn 0.3s ease-out forwards;
     }
-  }
 
-  @media (max-width: 768px) {
-    nav {
-      flex-direction: column;
-      padding: 10px;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
 
-      .title {
-        margin-bottom: 20px;
-      }
+      li {
+        a {
+          display: block;
+          padding: 12px 16px;
+          color: $text-color;
+          text-decoration: none;
 
-      ul {
-        flex-direction: column;
-        width: 100%;
-
-        li {
-          text-align: center;
-          margin-bottom: 10px;
-
-          a {
-            width: 100%;
-            padding: 10px 0;
+          &:hover {
+            background-color: $hover-color;
           }
         }
       }
     }
   }
+}
 
-  @media (max-width: 480px) {
-    nav {
-      padding: 5px 10px;
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
-      .title {
-        font-size: 1.2em; // 더 작은 화면에서는 폰트 크기를 줄임
-      }
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    padding: 10px;
 
-      ul li a {
-        padding: 8px 0; // 더 작은 화면에서는 패딩을 줄임
-      }
+    .title {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    .title {
+      font-size: 1.2em;
+    }
+
+    .dropdown-button {
+      padding: 8px 15px;
     }
   }
 }
