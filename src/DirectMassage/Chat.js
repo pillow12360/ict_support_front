@@ -5,6 +5,7 @@ import '../style/Chat.scss'; // 스타일 시트 임포트
 import { getDatabase, ref, onValue, off } from 'firebase/database';
 import { realtimeDatabase } from '../firebase.js';
 import { AuthContext } from '../contexts/AuthContext';
+import { Outlet } from 'react-router-dom';
 
 function Chat() {
   const [messages, setMessages] = useState([]); // 메시지 상태를 관리하는 상태 변수
@@ -42,9 +43,10 @@ function Chat() {
 
   return (
     <div className="chat-container">
-      <h2 className="chat-title">Direct Message</h2>
+      <h2 className="chat-title">ICT 민원 처리 소통방</h2>
       <MessageList className="message-list" messages={messages} />
       <MessageInput currentUser={currentUser} />
+      <Outlet />
     </div>
   );
 }
