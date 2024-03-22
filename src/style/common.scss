@@ -17,12 +17,24 @@
   border-radius: 10px; // 모서리 둥글게
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // 그림자 효과
   z-index: 1000; // 다른 요소들 위에 표시될 수 있도록 z-index 설정
+  @media screen and (max-width: 480px) {
+    position: static; // 모바일에서는 고정 위치를 해제
+    margin: 10px;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 90%; // 모바일 화면의 너비에 맞게 조정
+    max-height: none; // 모바일에서는 최대 높이 제한을 해제
+  }
 }
 
 // 공통 텍스트 스타일
 %text-style {
   color: $text-color;
   font-family: $font-stack;
+  @media screen and (max-width: 480px) {
+    font-size: 14px; // 모바일에서는 폰트 크기를 줄임
+  }
 }
 
 // 공통 버튼 스타일
@@ -38,6 +50,10 @@
 
   &:hover {
     background-color: $secondary-color;
+  }
+  @media screen and (max-width: 480px) {
+    padding: 8px; // 모바일에서는 패딩을 줄임
+    font-size: 14px; // 모바일에서는 폰트 크기를 줄임
   }
 }
 

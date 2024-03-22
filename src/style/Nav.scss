@@ -1,5 +1,3 @@
-// styles/nav.scss
-
 $primary-color: #3498db;
 $hover-color: darken($primary-color, 10%);
 $text-color: #ffffff;
@@ -12,20 +10,25 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  border-top-left-radius : 10px;
-  border-top-right-radius : 3px;
-  border-bottom-right-radius : 50px;
-  border-bottom-left-radius : 70px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 70px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
 
   .title {
     font-size: 1.5em;
     font-weight: bold;
     color: $text-color;
+
     a {
       text-decoration: none;
-      color: inherit; // 상위 요소로부터 색상 상속
+      color: inherit;
     }
   }
 
@@ -60,29 +63,42 @@ nav {
     }
   }
 
-  // 미디어 쿼리를 사용하여 모바일 환경에 대응
   @media (max-width: 768px) {
     nav {
       flex-direction: column;
       padding: 10px;
-  
+
       .title {
-        margin-bottom: 20px; // 모바일 환경에서 제목과 항목 사이 간격 증가
+        margin-bottom: 20px;
       }
-  
+
       ul {
         flex-direction: column;
-        width: 100%; // 모바일 환경에서 ul의 너비를 100%로 설정
-  
+        width: 100%;
+
         li {
-          text-align: center; // 모바일 환경에서 항목을 가운데 정렬
-          margin-bottom: 10px; // 모바일 환경에서 항목 사이의 간격 증가
-  
+          text-align: center;
+          margin-bottom: 10px;
+
           a {
-            width: 100%; // a 태그의 너비를 li와 같게 설정
-            padding: 10px 0; // 모바일 환경에서 상하 패딩 증가
+            width: 100%;
+            padding: 10px 0;
           }
         }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    nav {
+      padding: 5px 10px;
+
+      .title {
+        font-size: 1.2em; // 더 작은 화면에서는 폰트 크기를 줄임
+      }
+
+      ul li a {
+        padding: 8px 0; // 더 작은 화면에서는 패딩을 줄임
       }
     }
   }
