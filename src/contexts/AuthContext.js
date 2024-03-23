@@ -25,6 +25,16 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     setIsKakaoBrowser(/KAKAOTALK/i.test(navigator.userAgent));
+
+    const storedUser = sessionStorage.getItem('currentUser');
+    const storedRole = sessionStorage.getItem('userRole');
+
+    if (storedUser) {
+      setCurrentUser(JSON.parse(storedUser));
+    }
+    if (storedRole) {
+      setUserRole(storedRole);
+    }
   }, []);
 
   const fetchUserRole = async (user) => {
@@ -40,6 +50,7 @@ export const AuthProvider = ({ children }) => {
     if (docSnap.exists()) {
       // 문서가 존재하면 권한 정보를 업데이트
       setUserRole(docSnap.data().role);
+      sessionStorage.setItem('userRole', docSnap.data().role); // 세션 스토리지에 권한 정보 저장
     } else {
       // 문서가 존재하지 않으면 기본 권한으로 새로운 사용자 문서를 생성
       const defaultRole = 'user'; // 기본 권한 설정
@@ -73,6 +84,7 @@ export const AuthProvider = ({ children }) => {
         console.log(result.user); // 로그인 성공 후 user 객체 확인
         if (result.user && result.user.uid) {
           fetchUserRole(result.user);
+          sessionStorage.setItem('currentUser', JSON.stringify(result.user));
         } else {
           console.error('User UID is undefined.');
         }
@@ -85,6 +97,8 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     return signOut(auth)
       .then(() => {
+        sessionStorage.removeItem('currentUser');
+        sessionStorage.removeItem('userRole'); // 로그아웃시 세션에 저장된 로그인 정보 삭제
         navigate('/');
         setUserRole(null); // 로그아웃 시 권한 정보 초기화
       })
@@ -95,15 +109,25 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
       if (user) {
-        fetchUserRole(user.uid); // 사용자 상태 변경 시 권한 정보 가져오기
+        // 사용자 로그인 상태
+
+        sessionStorage.setItem('currentUser', JSON.stringify(user));
+        setCurrentUser(user);
+        fetchUserRole(user.uid).then((role) => {
+          sessionStorage.setItem('userRole', role); // 권한 정보 세션 스토리지에 저장
+          setUserRole(role);
+        });
         if (location.pathname === '/') {
           navigate('/home');
         }
       } else {
+        // 사용자 로그아웃 상태
+        sessionStorage.removeItem('currentUser');
+        sessionStorage.removeItem('userRole');
+        setCurrentUser(null);
+        setUserRole(null);
         navigate('/');
-        setUserRole(null); // 사용자 로그아웃 시 권한 정보 초기화
       }
     });
     return () => unsubscribe();

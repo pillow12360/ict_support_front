@@ -5,7 +5,9 @@ import { AuthContext } from '../contexts/AuthContext';
 
 const Home = () => {
   const { currentUser, userRole } = useContext(AuthContext);
-
+  if (!currentUser) {
+    return <div>Loding</div>;
+  }
   return (
     <div className={styles.container}>
       <h1>ICT 지원실 민원 처리</h1>
