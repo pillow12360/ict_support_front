@@ -17,9 +17,50 @@ import ComplaintDetail from './ComplaintDetail';
 
 const ComplaintList = () => {
   const { currentUser, userRole } = useContext(AuthContext); // 현재 유저 정보
-  const currentUserId = currentUser.uid;
   const { openModal } = useModal();
   const [complaints, setComplaints] = useState([]);
+
+  useEffect(() => {
+    if (!currentUser) {
+      return;
+    }
+    const currentUserId = currentUser.uid;
+
+    const fetchComplaints = async () => {
+      try {
+        let q;
+        if (userRole === 'admin') {
+          // 관리자인 경우 모든 민원을 가져옴
+          q = query(collection(db, 'complaints'));
+        } else {
+          // 일반 사용자인 경우 해당 사용자의 민원만 가져옴
+          q = query(
+            collection(db, 'complaints'),
+            where('userId', '==', currentUserId),
+          );
+        }
+        const querySnapshot = await getDocs(q);
+        const complaintsData = querySnapshot.docs.map((doc) => {
+          const timestamp = doc.data().timestamp;
+          const date = timestamp ? timestamp.toDate() : new Date();
+          const formattedDate = date.toLocaleDateString('ko-KR');
+          return {
+            id: doc.id,
+            ...doc.data(),
+            timestamp: formattedDate,
+          };
+        });
+        setComplaints(complaintsData);
+      } catch (error) {
+        console.error('Error fetching complaints: ', error);
+      }
+    };
+    fetchComplaints();
+  }, [currentUser, userRole]); // userRole을 의존성 배열에 추가
+
+  if (!currentUser) {
+    return <div>Loding</div>;
+  }
 
   const statusStyles = {
     // 상태별로 스타일을 정의
@@ -51,39 +92,6 @@ const ComplaintList = () => {
       console.error('문서를 불러오는 중 에러가 발생하였습니다.', error);
     }
   };
-
-  useEffect(() => {
-    const fetchComplaints = async () => {
-      try {
-        let q;
-        if (userRole === 'admin') {
-          // 관리자인 경우 모든 민원을 가져옴
-          q = query(collection(db, 'complaints'));
-        } else {
-          // 일반 사용자인 경우 해당 사용자의 민원만 가져옴
-          q = query(
-            collection(db, 'complaints'),
-            where('userId', '==', currentUserId),
-          );
-        }
-        const querySnapshot = await getDocs(q);
-        const complaintsData = querySnapshot.docs.map((doc) => {
-          const timestamp = doc.data().timestamp;
-          const date = timestamp ? timestamp.toDate() : new Date();
-          const formattedDate = date.toLocaleDateString('ko-KR');
-          return {
-            id: doc.id,
-            ...doc.data(),
-            timestamp: formattedDate,
-          };
-        });
-        setComplaints(complaintsData);
-      } catch (error) {
-        console.error('Error fetching complaints: ', error);
-      }
-    };
-    fetchComplaints();
-  }, [currentUserId, userRole]); // userRole을 의존성 배열에 추가
 
   return (
     <div className="complaint-list-container">

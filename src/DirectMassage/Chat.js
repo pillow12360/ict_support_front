@@ -12,6 +12,9 @@ function Chat() {
   const { currentUser, userRole } = useContext(AuthContext);
 
   useEffect(() => {
+    if (!currentUser) {
+      return;
+    }
     // 'messages' 경로의 참조 생성
     const dbRef = ref(realtimeDatabase, 'messages');
     const unsubscribe = onValue(dbRef, (snapshot) => {
@@ -39,7 +42,7 @@ function Chat() {
 
     // 컴포넌트 언마운트 시 리스너 정리
     return () => off(dbRef, 'value', unsubscribe);
-  }, []);
+  }, [currentUser]);
 
   return (
     <div className="chat-container">

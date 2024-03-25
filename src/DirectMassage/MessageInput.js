@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getDatabase, ref, push } from 'firebase/database';
 import '../style/MessageInput.scss'; // 스타일 시트 임포트
 
 function MessageInput({ currentUser }) {
   const [message, setMessage] = useState('');
   const database = getDatabase(); // Firebase Realtime Database 인스턴스 가져오기
+
+  if (!currentUser) {
+    return <div>Loding</div>;
+  }
   const sender = currentUser.displayName;
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     // 메시지 객체 생성
     const newMessage = {
       sender: sender, // 예시용. 실제로는 현재 사용자의 ID를 사용해야 합니다.

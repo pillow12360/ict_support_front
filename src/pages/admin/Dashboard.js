@@ -62,7 +62,6 @@ function Dashboard() {
               총 민원 수 :{' '}
               {complaintStatus.reduce((acc, curr) => acc + curr.value, 0)}
             </p>
-
             <p>접수 중 : {complaintStatus[0]?.value || 0}</p>
             <p>접수 불가 : {complaintStatus[1]?.value || 0}</p>
             <p>처리 중 : {complaintStatus[2]?.value || 0}</p>
@@ -99,5 +98,4 @@ function Dashboard() {
     </div>
   );
 }
-
 export default Dashboard;
