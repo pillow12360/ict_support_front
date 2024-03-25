@@ -11,7 +11,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3 # Node.js 설정 추가
         with:
-          node-version: '21.4.0' # 프로젝트에 맞는 Node.js 버전 지정
+          node-version: '20' # 프로젝트에 맞는 Node.js 버전 지정
       - name: Install Dependencies
         run: npm install
       - name: Build
