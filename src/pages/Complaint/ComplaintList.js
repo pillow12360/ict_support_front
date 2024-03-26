@@ -143,10 +143,6 @@ const ComplaintList = () => {
               })()
             )}
           </p>
-          {/* 관리자일 경우 삭제된 민원에 대해 "삭제됨" 표시 추가 */}
-          {userRole === 'admin' && complaint.isDeleted && (
-            <p className="status-deleted">삭제됨</p>
-          )}
         </div>
       ))}
     </div>

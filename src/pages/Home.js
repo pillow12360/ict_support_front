@@ -26,6 +26,19 @@ const Home = () => {
       ) : null}
       <div className={styles.user}>
         <h2>환영합니다 {currentUser.displayName}님!</h2>
+        <p>
+          현재 권한 :{' '}
+          {(() => {
+            switch (userRole) {
+              case 'user':
+                return '학생';
+              case 'admin':
+                return '관리자';
+              default:
+                return '알 수 없음';
+            }
+          })()}
+        </p>
         <p>무엇을 도와드릴까요? 원하는 기능을 선택하여주세요</p>
         <div className={styles.buttonGroup}>
           <Link to="/complaintformfirebase" className={styles.btn}>
