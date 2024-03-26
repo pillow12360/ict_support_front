@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { collection, getDocs, query } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 const COLORS = ['#FFBB28', '#FF8042', '#0088FE'];
@@ -19,7 +19,10 @@ function Dashboard() {
     };
 
     const fetchComplaintData = async () => {
-      const complaintQuery = query(collection(db, 'complaints'));
+      const complaintQuery = query(
+        collection(db, 'complaints'),
+        where('isDeleted', '==', false),
+      );
       const querySnapshot = await getDocs(complaintQuery);
       const status = {
         accepting: 0,

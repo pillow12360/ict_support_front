@@ -6,7 +6,7 @@ const ComplaintManage = () => {
   return (
     <div className="container">
       <Dashboard />
-      <Link to="/admin/complaintlist">민원 관리 페이지</Link>
+      <Link to="/complaintlist">민원 관리 페이지</Link>
     </div>
   );
 };

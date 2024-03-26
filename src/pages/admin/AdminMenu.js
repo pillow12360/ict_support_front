@@ -4,6 +4,8 @@ import { useModal } from '../../contexts/ModalContext';
 import ComplaintFormFirebase from '../Complaint/ComplaintFormFirebase';
 import { Link } from '../../../node_modules/react-router-dom/dist/index';
 import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 const AdminMenu = ({ detailData }) => {
   const navigate = useNavigate();
@@ -23,9 +25,43 @@ const AdminMenu = ({ detailData }) => {
       <>
         <h2 className="title">경고</h2>
         <p>해당 민원을 삭제하시겠습니까?</p>
-        <button className="button delete">삭제</button>
+        <button className="button delete" onClick={onClickDelete}>
+          삭제
+        </button>
       </>,
     );
+  };
+
+  const onClickDelete = async () => {
+    const complaintRef = doc(db, 'complaints', detailData.id);
+    try {
+      await updateDoc(complaintRef, {
+        isDeleted: true,
+      });
+      openModal(
+        <>
+          <p>민원 삭제</p>
+          <p>민원 삭제가 완료 되었습니다.</p>
+          <button
+            className="button process"
+            onClick={() => {
+              closeModal();
+              navigate('/complaintlist');
+            }}
+          >
+            민원 목록으로 돌아가기
+          </button>
+        </>,
+      );
+    } catch (error) {
+      openModal(
+        <>
+          <p>에러</p>
+          <p>민원 삭제 중 에러가 발생하였습니다.</p>
+          <p>에러 코드 : {error}</p>
+        </>,
+      );
+    }
   };
 
   const handleProcess = () => {
@@ -36,21 +72,14 @@ const AdminMenu = ({ detailData }) => {
     <div className="admin-menu-container">
       관리자 전용 메뉴
       <br />
-      {/* <Link 
-        to={{
-          pathname: '/complaintformfirebase',
-          state: { detailData },
-        }}
-        className="button edit"
-      >
-        수정
-      </Link> */}
       <button className="button edit" onClick={handleEdit}>
         수정
       </button>
-      <button className="button delete" onClick={handleDelete}>
-        삭제
-      </button>
+      {detailData.isDeleted === false && (
+        <button className="button delete" onClick={handleDelete}>
+          삭제
+        </button>
+      )}
       <button className="button process" onClick={handleProcess}>
         민원 처리
       </button>

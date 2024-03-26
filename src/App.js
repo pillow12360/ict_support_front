@@ -42,12 +42,7 @@ const App = () => {
                   element={<ComplaintFormFirebase />}
                 />
                 <Route path="*" element={<NotFound />}></Route>
-                <Route path="admin" element={<ComplaintManage />}>
-                  <Route
-                    paht="complaintlist"
-                    element={<ComplaintsListManage />}
-                  />
-                </Route>
+                <Route path="admin" element={<ComplaintManage />} />
                 <Route path="/directmessage" element={<Chat />}>
                   <Route path=":dminput" element={MessageInput} />
                   <Route path=":dmlist" element={MessageList} />

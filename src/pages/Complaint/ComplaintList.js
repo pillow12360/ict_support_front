@@ -37,6 +37,7 @@ const ComplaintList = () => {
           q = query(
             collection(db, 'complaints'),
             where('userId', '==', currentUserId),
+            where('isDeleted', '==', false),
           );
         }
         const querySnapshot = await getDocs(q);
@@ -50,6 +51,7 @@ const ComplaintList = () => {
             timestamp: formattedDate,
           };
         });
+        console.log(complaintsData);
         setComplaints(complaintsData);
       } catch (error) {
         console.error('Error fetching complaints: ', error);
@@ -69,6 +71,7 @@ const ComplaintList = () => {
     in_progress: 'complaint in_progress',
     completed: 'complaint completed',
     unresolvable: 'complaint unresolvable',
+    deleted: 'complaint deleted',
   };
 
   const handleClick = async (id) => {
@@ -100,10 +103,15 @@ const ComplaintList = () => {
       ) : (
         <h1>내가 접수한 민원 목록</h1>
       )}
+      {complaints.length === 0 && (
+        <div>접수된 민원이 현재 존재하지 않습니다.</div>
+      )}
       {complaints.map((complaint) => (
         <div
           key={complaint.id}
-          className={statusStyles[complaint.status] || 'complaint'}
+          className={`${statusStyles[complaint.status] || 'complaint'} ${
+            complaint.isDeleted ? 'deleted' : ''
+          }`}
           onClick={() => {
             handleClick(complaint.id);
           }}
@@ -111,31 +119,34 @@ const ComplaintList = () => {
           <p>접수자 : {complaint.userName}</p>
           <p>민원 제목: {complaint.title}</p>
           <p>접수 일자 : {complaint.timestamp}</p>
-          {/* 상태별 아이콘 또는 텍스트를 추가할 수 있습니다. */}
           <p>
             처리 상태 :{' '}
-            {(() => {
-              switch (complaint.status) {
-                case 'accepting':
-                  return '처리 중';
-                case 'received':
-                  return '접수 완료';
-                case 'not_accepted':
-                  return '접수 불가';
-                case 'in_progerss':
-                  return '처리 중';
-                case 'completed':
-                  return '처리 완료';
-                case 'unresolvable':
-                  return '처리 불가';
-                default:
-                  return '알 수 없음';
-              }
-            })()}
-            <span className={`status-icon ${complaint.status}`}>
-              {/* 상태 아이콘 또는 텍스트 */}
-            </span>
+            {complaint.isDeleted ? (
+              <span className="status-deleted">삭제됨</span>
+            ) : (
+              // 기존 switch 문을 이용한 처리 상태 로직 유지
+              (() => {
+                switch (complaint.status) {
+                  case 'accepting':
+                    return '처리 중';
+                  case 'received':
+                    return '접수 완료';
+                  case 'in_progress':
+                    return '처리 중';
+                  case 'completed':
+                    return '처리 완료';
+                  case 'unresolvable':
+                    return '처리 불가';
+                  default:
+                    return '알 수 없음';
+                }
+              })()
+            )}
           </p>
+          {/* 관리자일 경우 삭제된 민원에 대해 "삭제됨" 표시 추가 */}
+          {userRole === 'admin' && complaint.isDeleted && (
+            <p className="status-deleted">삭제됨</p>
+          )}
         </div>
       ))}
     </div>

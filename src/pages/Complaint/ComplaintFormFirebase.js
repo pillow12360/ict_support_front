@@ -8,6 +8,7 @@ import {
   useNavigate,
   useLocation,
 } from '../../../node_modules/react-router-dom/dist/index';
+import { Diversity1 } from '../../../node_modules/@mui/icons-material/index';
 
 function ComplaintFormFirebase() {
   const { currentUser } = useContext(AuthContext);
@@ -30,6 +31,7 @@ function ComplaintFormFirebase() {
         category: detailData.category || '',
         room: detailData.room || '',
         status: detailData.status || 'accepting',
+        isDeleted: detailData.isDeleted || false,
       });
     }
 
@@ -92,6 +94,7 @@ function ComplaintFormFirebase() {
           userId: currentUser.uid,
           userName: currentUser.displayName,
           timestamp: new Date(),
+          isDeleted: false,
         }).then(
           openModal(
             <>

@@ -42,6 +42,14 @@
     &.in_progress { background-color: #add8e6; }
     &.completed { background-color: #90ee90; }
     &.unresolvable { background-color: #ffcccb; }
+    &.deleted { // 삭제된 민원에 대한 스타일 추가
+      background-color: #ffcccc; // 빨간색 배경
+      color: #000; // 텍스트 색상
+      .status-deleted { // 삭제된 상태 텍스트 스타일
+        color: #dc3545; // 빨간색
+        font-weight: bold;
+      }
+    }
 
     // 상태 표시를 위한 추가적인 스타일
     .status-indicator {
@@ -57,6 +65,8 @@
       &.in_progress { background-color: #ffc107; }
       &.completed { background-color: #17a2b8; }
       &.unresolvable { background-color: #dc3545; }
+      
     }
   }
 }
+
