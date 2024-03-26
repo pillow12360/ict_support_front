@@ -7,6 +7,7 @@ import {
   getDocs,
   doc,
   getDoc,
+  orderBy,
 } from 'firebase/firestore';
 import { AuthContext } from '../../contexts/AuthContext';
 import '../../style/ComplaintList.scss';
@@ -31,13 +32,14 @@ const ComplaintList = () => {
         let q;
         if (userRole === 'admin') {
           // 관리자인 경우 모든 민원을 가져옴
-          q = query(collection(db, 'complaints'));
+          q = query(collection(db, 'complaints'), orderBy('timestamp', 'desc'));
         } else {
           // 일반 사용자인 경우 해당 사용자의 민원만 가져옴
           q = query(
             collection(db, 'complaints'),
             where('userId', '==', currentUserId),
             where('isDeleted', '==', false),
+            orderBy('timestamp', 'desc'),
           );
         }
         const querySnapshot = await getDocs(q);
