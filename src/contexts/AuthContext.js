@@ -48,9 +48,11 @@ export const AuthProvider = ({ children }) => {
     const docSnap = await getDoc(userRef);
 
     if (docSnap.exists()) {
-      // 문서가 존재하면 권한 정보를 업데이트
-      setUserRole(docSnap.data().role);
-      sessionStorage.setItem('userRole', docSnap.data().role); // 세션 스토리지에 권한 정보 저장
+      // 문서가 존재하면 권한 정보를 업데이트하고 반환
+      const userRole = docSnap.data().role;
+      setUserRole(userRole); // 상태 업데이트
+      sessionStorage.setItem('userRole', userRole); // 세션 스토리지에 권한 정보 저장
+      return userRole; // 권한 정보 반환
     } else {
       // 문서가 존재하지 않으면 기본 권한으로 새로운 사용자 문서를 생성
       const defaultRole = 'user'; // 기본 권한 설정
@@ -61,6 +63,8 @@ export const AuthProvider = ({ children }) => {
         role: defaultRole,
       });
       setUserRole(defaultRole); // 상태 업데이트
+      sessionStorage.setItem('userRole', defaultRole); // 세션 스토리지에 저장
+      return defaultRole; // 기본 권한 반환
     }
   };
 
@@ -108,16 +112,15 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      // async 추가
       if (user) {
         // 사용자 로그인 상태
-
         sessionStorage.setItem('currentUser', JSON.stringify(user));
         setCurrentUser(user);
-        fetchUserRole(user.uid).then((role) => {
-          sessionStorage.setItem('userRole', role); // 권한 정보 세션 스토리지에 저장
-          setUserRole(role);
-        });
+        const role = await fetchUserRole(user); // await 추가
+        sessionStorage.setItem('userRole', role); // 권한 정보 세션 스토리지에 저장
+        setUserRole(role);
         if (location.pathname === '/') {
           navigate('/home');
         }
@@ -132,7 +135,6 @@ export const AuthProvider = ({ children }) => {
     });
     return () => unsubscribe();
   }, [auth, navigate, location.pathname]);
-
   return (
     <AuthContext.Provider
       value={{ currentUser, userRole, isKakaoBrowser, loginWithGoogle, logout }}

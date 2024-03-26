@@ -34,7 +34,7 @@ const ComplaintsListManage = () => {
 
   return (
     <div>
-      <h2>모든 민원</h2>
+      <h2>모든 접수민원 리스트</h2>
       <ul>
         {complaints.map((complaint) => (
           <li key={complaint.id}>

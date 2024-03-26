@@ -20,6 +20,7 @@ import ComplaintManage from './pages/admin/ComplaintManage';
 import Chat from './DirectMassage/Chat';
 import MessageInput from './DirectMassage/MessageInput';
 import MessageList from './DirectMassage/MessageList';
+import ComplaintsListManage from './pages/admin/ComplaintsListManage';
 const App = () => {
   return (
     <Router>
@@ -41,7 +42,12 @@ const App = () => {
                   element={<ComplaintFormFirebase />}
                 />
                 <Route path="*" element={<NotFound />}></Route>
-                <Route path="/admin" element={<ComplaintManage />} />
+                <Route path="admin" element={<ComplaintManage />}>
+                  <Route
+                    paht="complaintlist"
+                    element={<ComplaintsListManage />}
+                  />
+                </Route>
                 <Route path="/directmessage" element={<Chat />}>
                   <Route path=":dminput" element={MessageInput} />
                   <Route path=":dmlist" element={MessageList} />

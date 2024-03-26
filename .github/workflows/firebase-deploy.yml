@@ -1,24 +1,24 @@
-name: Deploy to Firebase
-on:
-  push:
-    branches:
-      - master # 배포할 브랜치 지정
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3 # 버전을 최신으로 업데이트
-      - name: Setup Node.js
-        uses: actions/setup-node@v3 # Node.js 설정 추가
-        with:
-          node-version: '20' # 프로젝트에 맞는 Node.js 버전 지정
-      - name: Install Dependencies
-        run: npm install
-      - name: Build
-        run: npm run build # 프로젝트 빌드 명령어
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+# name: Deploy to Firebase
+# on:
+#   push:
+#     branches:
+#       - master # 배포할 브랜치 지정
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3 # 버전을 최신으로 업데이트
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v3 # Node.js 설정 추가
+#         with:
+#           node-version: '20' # 프로젝트에 맞는 Node.js 버전 지정
+#       - name: Install Dependencies
+#         run: npm install
+#       - name: Build
+#         run: npm run build # 프로젝트 빌드 명령어
+#       - name: Deploy to Firebase
+#         uses: w9jds/firebase-action@master
+#         with:
+#           args: deploy --only hosting
+#         env:
+#           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

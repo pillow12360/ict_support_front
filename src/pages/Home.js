@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../style/Home.module.scss'; // SCSS 모듈 임포트
 import { AuthContext } from '../contexts/AuthContext';
 
 const Home = () => {
   const { currentUser, userRole } = useContext(AuthContext);
+
   if (!currentUser) {
     return <div>Loding</div>;
   }
