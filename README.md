@@ -22,49 +22,7 @@
 - **민원 처리:** 민원에 대한 처리 기능 및 상태 업데이트
 - **민원 진행 알림:** 사용자에게 민원 진행 상황 알림 제공
 
-## 프로젝트 구조 및 컴포넌트 정리
-
-api
-	•	API 관련 함수나 설정 파일을 저장하는 디렉터리.
-	•	auth
-	•	AuthScreen.js: 인증 화면 구성.
-	•	GoogleLogin.js: 구글 로그인 기능.
-	•	LoginForm.js: 로그인 폼.
-	•	SignupForm.js: 회원가입 폼.
-	•	contexts
-	•	AuthContext.js: 인증 상태 관리를 위한 Context.
-	•	ModalContext.js: 모달 상태 관리를 위한 Context.
-	•	DirectMessage
-	•	Chat.js: 채팅 기능 구현.
-	•	MessageInput.js: 메시지 입력 컴포넌트.
-	•	MessageList.js: 메시지 리스트 컴포넌트.
-	•	hooks
-	•	Modal.js: 모달 관련 커스텀 훅.
-	•	useChat.js: 채팅 관련 커스텀 훅.
-	•	layout
-	•	Footer.js: 웹 페이지의 푸터.
-	•	HomeButton.js: 홈 버튼.
-	•	Nav.js: 네비게이션 바.
-	•	pages
-	•	admin: 관리자 관련 페이지들.
-	•	AdminMenu.js: 관리자 메뉴.
-	•	ComplaintManage.js: 민원 관리 페이지.
-	•	ComplaintProcess.js: 민원 처리 페이지.
-	•	ComplaintsListManage.js: 민원 목록 관리 페이지.
-	•	Dashboard.js: 대시보드 페이지.
-	•	complaint: 민원 관련 페이지들.
-	•	ComplaintDetail.js: 민원 상세 페이지.
-	•	ComplaintForm.js: 민원 등록 폼.
-	•	ComplaintFormFirebase.js: Firebase를 이용한 민원 폼.
-	•	ComplaintList.js: 민원 목록 페이지.
-	•	First.js: 초기 화면.
-	•	Home.js: 홈 페이지.
-	•	NotFound.js: 404 에러 페이지.
-	•	style
-	•	스타일 관련 파일들을 저장하는 디렉터리.
-	•	test
-	•	테스트 코드 관련 파일들을 저장하는 디렉터리.
-
+## 프로젝트 구조
 ```
 ict_support_front/
 ├── src/
